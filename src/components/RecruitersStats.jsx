@@ -1,5 +1,5 @@
 import React from "react";
-import CurvedImg from "../assets/CuvredImg.png";
+import CurvedImg from "../assets/Dots.png";
 import icon1 from "../assets/icon1.png";
 import icon2 from "../assets/icon2.png";
 import icon3 from "../assets/icon3.png";
@@ -100,7 +100,7 @@ const RecruitersStats = () => {
               <img
                 src={CurvedImg}
                 alt=""
-                className="absolute -right-62 top-1/2 -translate-y-1/2 h-3/4 w-auto object-contain opacity-80 pointer-events-none"
+                className="absolute -right-48 top-1/2 -translate-y-1/2 h-3/4 w-auto object-contain opacity-80 pointer-events-none"
               />
               <p className="text-4xl md:text-5xl font-bold relative z-10">Top</p>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 relative z-10">Recruiters</h2>
