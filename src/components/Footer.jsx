@@ -17,7 +17,7 @@ function Footer() {
 
   return (
     <div className="font-baskerville-regualr flex flex-col">
-      <div className="bg-gray-100 px-8 md:px-16 text-black py-6 rounded-tl-4xl rounded-tr-4xl flex-grow footer">
+      <div className="bg-gray-100 px-5 md:px-16 text-black py-8 rounded-tl-4xl rounded-tr-4xl flex-grow footer">
         <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 mt-6">
           {/* Left Column */}
           <div className="flex flex-col items-start space-y-8">
@@ -38,9 +38,9 @@ function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4">
-                <i className="fas fa-phone-alt text-2xl hover:text-green-500"></i>
-                <p>020-67103909/935/927/900  | +91 92265 35466</p>
+              <div className="flex items-start space-x-4">
+                <i className="fas fa-phone-alt text-2xl hover:text-green-500 mt-1"></i>
+                <p className="break-words">020-67103909/935/927/900 | +91 92265 35466</p>
               </div>
 
               <div className="flex items-center space-x-4">
