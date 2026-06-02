@@ -15,7 +15,7 @@ const NewSection = () => {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-b from-[#8B0035] via-[#14002E] to-[#8B0035] py-12 md:py-0 px-6 md:px-12 text-white md:h-full md:flex md:flex-col md:justify-center">
+    <section className="w-full bg-transparent py-12 md:py-16 px-6 md:px-12 text-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading & Paragraph above Horizontal Line */}
         <div className="border-b-2 border-white/10 pb-8 mb-10 flex flex-col items-center text-center">

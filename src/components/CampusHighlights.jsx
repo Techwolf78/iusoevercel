@@ -1,98 +1,20 @@
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
 import NewSection from "./NewSection";
 import CampusHighlightsSection from "./CampusHighlightsSection";
 import StudentClubsSection from "./StudentClubsSection";
 
-gsap.registerPlugin(ScrollTrigger);
-
 /**
  * CampusHighlights
  *
- * Stacking Panels Scroll Animation:
- *   - On Mobile: Sections stack and render vertically in one normal column.
- *   - On Desktop: The parent container is pinned, and Slide 2 & Slide 3
- *     slide up over Slide 1 dynamically as the user scrolls.
+ * Renders the campus highlight sections in a clean, responsive vertical column
+ * to guarantee that all headings, text, and image grids render properly on any screen height.
  */
 export default function CampusHighlights() {
-  const containerRef = useRef(null);
-  const newSectionRef = useRef(null);
-  const campusRef = useRef(null);
-  const clubsRef = useRef(null);
-
-  useLayoutEffect(() => {
-    // Only run scroll-stacking animations on desktop/tablet (width >= 768px)
-    if (window.innerWidth < 768) return;
-
-    const ctx = gsap.context(() => {
-      const ns = newSectionRef.current;
-      const cs = campusRef.current;
-      const sc = clubsRef.current;
-      if (!ns || !cs || !sc) return;
-
-      // Pin the outer container and slide the overlays sequentially
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=200%",        // 200% of viewport height scroll distance
-          pin: true,
-          scrub: true,
-          anticipatePin: 1,
-        },
-      });
-
-      // Set initial states: keep overlay slides off-screen below
-      gsap.set(cs, { yPercent: 100 });
-      gsap.set(sc, { yPercent: 100 });
-
-      // Slide them up one by one
-      tl.to(cs, { yPercent: 0, ease: "none" })
-        .to(sc, { yPercent: 0, ease: "none" });
-
-      // Refresh ScrollTrigger after DOM fully loads and paints
-      const refresh = () => ScrollTrigger.refresh();
-      if (document.readyState === "complete") {
-        setTimeout(refresh, 200);
-      } else {
-        window.addEventListener("load", refresh);
-      }
-      return () => window.removeEventListener("load", refresh);
-
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full md:h-screen md:overflow-hidden bg-gradient-to-b from-[#8B0035] via-[#14002E] to-[#8B0035]"
-    >
-      {/* Slide 1: Events */}
-      <div
-        ref={newSectionRef}
-        className="relative md:absolute md:inset-0 w-full md:h-full z-10 will-change-transform"
-      >
-        <NewSection />
-      </div>
-
-      {/* Slide 2: Facilities */}
-      <div
-        ref={campusRef}
-        className="relative md:absolute md:inset-0 w-full md:h-full z-20 will-change-transform"
-      >
-        <CampusHighlightsSection />
-      </div>
-
-      {/* Slide 3: Clubs */}
-      <div
-        ref={clubsRef}
-        className="relative md:absolute md:inset-0 w-full md:h-full z-30 will-change-transform"
-      >
-        <StudentClubsSection />
-      </div>
+    <div className="w-full flex flex-col bg-gradient-to-b from-[#8B0035] via-[#14002E] to-[#8B0035]">
+      <NewSection />
+      <CampusHighlightsSection />
+      <StudentClubsSection />
     </div>
   );
 }
