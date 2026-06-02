@@ -1,11 +1,12 @@
 import React from "react";
+import overviewImg from "../assets/IU.jpg";
+import curvedImg from "../assets/CuvredImg.png";
 
 const ABOUT_CONTENT = {
   title: "About the School of Engineering – Indira University",
   paragraphs: [
     "The School of Engineering (SOE) at Indira University, braced by two decades of Indira's legacy in engineering education through Indira College of Engineering and Management (ICEM), is designed to cultivate technically adept, ethically grounded, and industry-ready engineers. Our flagship B.Tech in Computer Science & Engineering bridges strong engineering fundamentals with the rapidly evolving demands of today's technology-driven world."
-  ],
-  placeholderText: "Placeholder: Image Content"
+  ]
 };
 
 function AboutUs() {
@@ -25,11 +26,23 @@ function AboutUs() {
           </div>
         </div>
 
-        {/* Right Grey Placeholder Container */}
-        <div className="w-full md:w-[55%] flex items-center justify-center">
-          <div className="w-full h-[250px] md:h-[350px] bg-slate-200 border border-dashed border-slate-300 rounded-tl-[2.5rem] rounded-br-[2.5rem] flex items-center justify-center text-slate-500 font-medium">
-            {ABOUT_CONTENT.placeholderText}
+        {/* Right Image Container with Overlay */}
+        <div className="w-full md:w-[55%] relative flex items-center justify-center">
+          {/* Main Image */}
+          <div className="w-full h-[280px] md:h-[380px] overflow-hidden rounded-tl-[2.5rem] rounded-br-[2.5rem] shadow-lg border border-slate-100">
+            <img
+              src={overviewImg}
+              alt="School of Engineering Overview"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+            />
           </div>
+
+          {/* Top Right Overlay PNG */}
+          <img
+            src={curvedImg}
+            alt="Decoration"
+            className="absolute -top-6 -right-6 w-[100px] sm:w-[130px] md:w-[160px] h-auto object-contain pointer-events-none drop-shadow-lg z-10"
+          />
         </div>
       </div>
     </section>
