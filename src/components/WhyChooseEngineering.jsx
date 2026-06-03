@@ -21,15 +21,16 @@ const WHY_CHOOSE_CONTENT = {
     {
       title: "Modern Computing Infrastructure & Smart Labs",
     },
-    {
-      title: "Holistic Development with Events, Student Clubs and Co-curricular activities",
-    },
+
 
     {
       title: "Earn professional certifications in every semester",
     },
     {
       title: "Opportunity to learn and grow at the heart of Pune city",
+    },
+    {
+      title: "Holistic Development with Events, Student Clubs and Co-curricular activities",
     },
   ],
 };
@@ -51,10 +52,12 @@ function WhyChooseEngineering() {
         {/* Cards — 2 columns on mobile */}
         <div className="grid grid-cols-2 gap-3">
           {WHY_CHOOSE_CONTENT.features.map((feature, index) => {
+            const isLast = index === WHY_CHOOSE_CONTENT.features.length - 1;
             return (
               <div
                 key={index}
-                className="border border-[#1D5DFF]/30 bg-white/5 rounded-2xl p-4 flex flex-col items-center justify-center text-center min-h-[90px]"
+                className={`border border-[#1D5DFF]/30 bg-white/5 rounded-2xl p-3 flex flex-col items-center justify-center text-center h-[110px] ${isLast ? "col-span-2" : ""
+                  }`}
               >
                 <h3 className="text-white text-[11px] font-bold leading-snug">
                   {feature.title}
