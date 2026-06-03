@@ -241,13 +241,13 @@ const Hero = () => {
                 </p>
 
                 {/* Admission Tag */}
-                <p className="mt-6 text-sm sm:text-base md:text-lg bg-[#1E62EC] text-white px-4 py-1.5 rounded-xl inline-block font-semibold w-fit shadow-[0_4px_20px_rgba(30,98,236,0.3)]">
+                <p className="mt-2 text-sm sm:text-base md:text-lg bg-[#1E62EC] text-white px-4 py-1.5 rounded-xl inline-block font-semibold w-fit shadow-[0_4px_20px_rgba(30,98,236,0.3)]">
                   {HERO_CONTENT.admissionTag}
                 </p>
 
 
                 {/* Stats */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4 mt-8 border-t border-white/10 pt-6 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4  border-t border-white/10 pt-6 w-full">
                   {stats.map((item, index) => (
                     <div
                       key={index}
