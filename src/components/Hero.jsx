@@ -33,8 +33,23 @@ const HERO_CONTENT = {
 };
 
 const Hero = () => {
+  const pulseKeyframes = `
+    @keyframes pulseText {
+      0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8);
+      }
+      100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7);
+      }
+    }
+  `;
+
   return (
     <>
+      <style>{pulseKeyframes}</style>
       {/* ═══════════════════════════════════════════
           MOBILE LAYOUT  (hidden on md and above)
       ═══════════════════════════════════════════ */}
@@ -51,10 +66,30 @@ const Hero = () => {
         {/* Content */}
         <div className="relative z-10 flex flex-col h-auto">
           {/* Navbar */}
-          <div className="flex items-center justify-between px-4 py-3 bg-[#000B2E]">
-            <img src={IUlogo} alt="IU Logo" className="h-13 object-contain" />
-            <div className="border border-white/20 bg-white/10 px-3 py-1 rounded-full text-white text-[10px] font-semibold tracking-wide">
-              {HERO_CONTENT.limitedSeats}
+          <div className="flex flex-col items-center py-3 px-4 bg-[#000B2E] w-full">
+            {/* Top Row - Logos */}
+            <div className="flex justify-between w-full items-center mb-2">
+              {/* Left Logo */}
+              <div className="flex-shrink-0">
+                <img
+                  src={IUlogo}
+                  alt="IU Logo"
+                  className="h-auto w-20"
+                />
+              </div>
+              <div className="border border-white/20 bg-white/10 px-3 py-1 rounded-full text-white text-[10px] font-semibold tracking-wide">
+                {HERO_CONTENT.limitedSeats}
+              </div>
+            </div>
+
+            {/* Center Text - Mobile */}
+            <div className="text-center w-full">
+              <h1 
+                className="text-white text-[15px] font-bold px-2 leading-tight" 
+                style={{ animation: 'pulseText 2s infinite' }}
+              >
+                SCHOOL OF ENGINEERING<br />(INDIRA UNIVERSITY)
+              </h1>
             </div>
           </div>
 
@@ -63,7 +98,7 @@ const Hero = () => {
             {/* Heading */}
             <h1 className="text-white font-bold leading-tight text-[18px] sm:text-2xl">
               {HERO_CONTENT.heading.map((line, index) => (
-                <span key={index} className="block">{line}</span>
+                <span key={index} className={`block ${index === 1 ? "text-[#1E62EC]" : "text-white"}`}>{line}</span>
               ))}
             </h1>
 
@@ -78,7 +113,7 @@ const Hero = () => {
             </p>
 
             {/* Admission tag */}
-            <div className="mt-4 inline-flex items-center self-center bg-[#C00433] text-white px-4 py-1.5 rounded-lg shadow-lg font-semibold text-xs">
+            <div className="mt-4 inline-flex items-center self-center bg-[#1E62EC] text-white px-4 py-1.5 rounded-lg shadow-lg font-semibold text-xs shadow-[0_4px_20px_rgba(30,98,236,0.3)]">
               {HERO_CONTENT.admissionTag}
             </div>
 
@@ -110,7 +145,7 @@ const Hero = () => {
                     <option value="btech-ai-ds">B.Tech (AI & Data Science)</option>
                     <option value="btech-cyber-cloud">B.Tech (Cyber Security & Cloud Technology)</option>
                   </select>
-                  <button className="w-full bg-[#E3003A] hover:bg-[#c00032] py-2 rounded-lg text-white font-bold text-[11px] tracking-wider active:scale-[0.98] transition-all">
+                  <button className="w-full bg-gradient-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] py-2 rounded-lg text-white font-bold text-[11px] tracking-wider active:scale-[0.98] transition-all shadow-md">
                     Submit
                   </button>
                 </form>
@@ -118,22 +153,24 @@ const Hero = () => {
             </div>
 
             {/* Stats for Mobile (2x2 Grid) */}
-            <div className="grid grid-cols-2 gap-2 mt-4 w-full max-w-sm">
+            <div className="grid grid-cols-2 gap-3 mt-5 w-full max-w-sm border-t border-white/10 pt-4">
               {stats.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 p-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm"
+                  className="flex items-center gap-2"
                 >
-                  <img
-                    src={item.icon}
-                    alt=""
-                    className="w-6 h-6 object-contain flex-shrink-0"
-                  />
+                  <div className="flex items-center justify-center border border-[#1E62EC]/40 bg-[#1E62EC]/10 rounded-full w-8 h-8 flex-shrink-0">
+                    <img
+                      src={item.icon}
+                      alt=""
+                      className="w-4 h-4 object-contain"
+                    />
+                  </div>
                   <div className="flex flex-col text-left">
-                    <h3 className="text-[#FF0700] text-xs font-extrabold leading-none whitespace-nowrap">
+                    <h3 className="text-white text-xs font-extrabold leading-none whitespace-nowrap">
                       {item.title}
                     </h3>
-                    <p className="text-white/80 text-[8px] leading-tight mt-0.5 max-w-[100px]">
+                    <p className="text-white/70 text-[8px] leading-tight mt-0.5 max-w-[90px]">
                       {item.subtitle}
                     </p>
                   </div>
@@ -160,13 +197,28 @@ const Hero = () => {
         {/* Main Content */}
         <div className="relative z-10 min-h-screen flex flex-col">
           {/* Navbar */}
-          <div className="w-full flex items-center justify-between px-5 md:px-10 py-4 md:py-5 bg-[#000B2E]">
-            <img
-              src={IUlogo}
-              alt="IU Logo"
-              className="h-18 md:h-22 object-contain"
-            />
-            <div className="border border-white/20 bg-white/10 px-4 py-1.5 rounded-full text-white text-xs md:text-sm font-semibold">
+          <div className="w-full flex items-center justify-between px-4 md:px-8 lg:px-16 py-3 md:py-4 bg-[#000B2E]">
+            {/* LEFT LOGO */}
+            <div className="flex-shrink-0">
+              <img
+                src={IUlogo}
+                alt="IU Logo"
+                className="h-auto w-24 md:w-28 lg:w-36 xl:w-42"
+              />
+            </div>
+
+            {/* CENTER TEXT */}
+            <div className="flex-grow flex items-center justify-center text-center px-2 md:px-4">
+              <h1 
+                className="text-white text-base md:text-lg lg:text-2xl xl:text-3xl font-bold whitespace-nowrap"
+                style={{ animation: 'pulseText 2s infinite' }}
+              >
+                SCHOOL OF ENGINEERING (INDIRA UNIVERSITY)
+              </h1>
+            </div>
+
+            {/* RIGHT BUTTON/SEATS */}
+            <div className="flex-shrink-0 border border-white/20 bg-white/10 px-4 py-1.5 rounded-full text-white text-xs md:text-sm font-semibold">
               {HERO_CONTENT.limitedSeats}
             </div>
           </div>
@@ -180,7 +232,7 @@ const Hero = () => {
                 {/* Heading */}
                 <h1 className="text-white font-bold leading-tight text-[26px] sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px]">
                   {HERO_CONTENT.heading.map((line, index) => (
-                    <span key={index} className="block md:whitespace-nowrap">{line}</span>
+                    <span key={index} className={`block md:whitespace-nowrap ${index === 1 ? "text-[#1E62EC]" : "text-white"}`}>{line}</span>
                   ))}
                 </h1>
 
@@ -195,27 +247,30 @@ const Hero = () => {
                 </p>
 
                 {/* Admission Tag */}
-                <p className="mt-6 text-sm sm:text-base md:text-lg bg-[#C00433] text-white px-4 py-1.5 rounded-xl inline-block font-semibold w-fit">
+                <p className="mt-6 text-sm sm:text-base md:text-lg bg-[#1E62EC] text-white px-4 py-1.5 rounded-xl inline-block font-semibold w-fit shadow-[0_4px_20px_rgba(30,98,236,0.3)]">
                   {HERO_CONTENT.admissionTag}
                 </p>
 
+
                 {/* Stats */}
-                <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mt-8 border-t border-white/10 pt-6 w-full">
+                <div className="grid grid-cols-2 xl:flex xl:flex-row items-center justify-between gap-6 mt-8 border-t border-white/10 pt-6 w-full">
                   {stats.map((item, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3"
+                      className="flex items-center gap-3 xl:pr-6 xl:border-r xl:border-white/10 xl:last:border-none xl:flex-1"
                     >
-                      <img
-                        src={item.icon}
-                        alt=""
-                        className="w-9 h-9 lg:w-11 lg:h-11 object-contain flex-shrink-0"
-                      />
+                      <div className="flex items-center justify-center border border-[#1E62EC]/50 bg-[#1E62EC]/10 rounded-full w-10 h-10 lg:w-12 lg:h-12 flex-shrink-0">
+                        <img
+                          src={item.icon}
+                          alt=""
+                          className="w-5 h-5 lg:w-6 lg:h-6 object-contain"
+                        />
+                      </div>
                       <div className="flex flex-col text-left">
-                        <h3 className="text-[#FF0700] text-sm md:text-base lg:text-lg xl:text-xl font-extrabold leading-none whitespace-nowrap">
+                        <h3 className="text-white text-sm md:text-base lg:text-lg xl:text-xl font-extrabold leading-none whitespace-nowrap">
                           {item.title}
                         </h3>
-                        <p className="text-white/80 text-[9px] lg:text-xs leading-snug mt-1 max-w-[110px] lg:max-w-[140px]">
+                        <p className="text-white/70 text-[9px] lg:text-xs leading-snug mt-1 max-w-[110px] lg:max-w-[140px]">
                           {item.subtitle}
                         </p>
                       </div>
@@ -254,7 +309,7 @@ const Hero = () => {
                       <option value="btech-ai-ds">B.Tech (AI & Data Science)</option>
                       <option value="btech-cyber-cloud">B.Tech (Cyber Security & Cloud Technology)</option>
                     </select>
-                    <button className="w-full bg-[#E3003A] hover:bg-[#c00032] py-2.5 rounded-lg text-white font-bold text-sm tracking-wider shadow-lg active:scale-[0.98] transition-all">
+                    <button className="w-full bg-gradient-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] py-2.5 rounded-lg text-white font-bold text-sm tracking-wider shadow-lg active:scale-[0.98] transition-all">
                       Submit
                     </button>
                   </form>
