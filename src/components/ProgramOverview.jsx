@@ -176,7 +176,7 @@ const ProgramOverview = () => {
               <button
                 onClick={handleApplyClick}
                 className={`absolute bottom-0 ${isEven ? "right-12" : "left-12"
-                  } transform translate-y-1/2 bg-[#990000] hover:bg-[#800000] hover:scale-105 active:scale-95 transition-all duration-300 text-white font-bold text-xs md:text-sm tracking-wider px-6 py-2.5 rounded-lg shadow-lg flex items-center gap-2 z-20`}
+                  } transform translate-y-1/2 bg-gradient-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] hover:scale-105 active:scale-95 transition-all duration-300 text-white font-bold text-xs md:text-sm tracking-wider px-6 py-2.5 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-2 z-20`}
               >
                 APPLY NOW
                 <svg
@@ -241,7 +241,7 @@ const ProgramOverview = () => {
               {/* Mobile Apply Button overlapping bottom border */}
               <button
                 onClick={handleApplyClick}
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-[#990000] hover:bg-[#800000] active:scale-95 transition-all duration-300 text-white font-bold text-xs tracking-wider px-6 py-2 rounded-lg shadow-lg flex items-center gap-1.5 z-20 whitespace-nowrap"
+                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-gradient-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] active:scale-95 transition-all duration-300 text-white font-bold text-xs tracking-wider px-6 py-2 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-1.5 z-20 whitespace-nowrap"
               >
                 APPLY NOW
                 <svg

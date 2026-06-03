@@ -68,7 +68,7 @@ const Hero = () => {
           {/* Navbar */}
           <div className="flex flex-col items-center py-3 px-4 bg-[#000B2E] w-full">
             {/* Top Row - Logos */}
-            <div className="flex justify-between w-full items-center mb-2">
+            <div className="flex justify-center w-full items-center mb-2">
               {/* Left Logo */}
               <div className="flex-shrink-0">
                 <img
@@ -77,15 +77,12 @@ const Hero = () => {
                   className="h-auto w-20"
                 />
               </div>
-              <div className="border border-white/20 bg-white/10 px-3 py-1 rounded-full text-white text-[10px] font-semibold tracking-wide">
-                {HERO_CONTENT.limitedSeats}
-              </div>
             </div>
 
             {/* Center Text - Mobile */}
             <div className="text-center w-full">
-              <h1 
-                className="text-white text-[15px] font-bold px-2 leading-tight" 
+              <h1
+                className="text-white text-[15px] font-bold px-2 leading-tight"
                 style={{ animation: 'pulseText 2s infinite' }}
               >
                 SCHOOL OF ENGINEERING<br />(INDIRA UNIVERSITY)
@@ -120,7 +117,6 @@ const Hero = () => {
             {/* NPF Form Container for Mobile */}
             <div className="mt-5 w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl">
               <div id="npf-mobile-form" className="w-full">
-                <h3 className="text-white text-xs font-bold mb-3 text-center">Admission Enquiry 2026-27</h3>
                 <form className="space-y-2.5" onSubmit={(e) => e.preventDefault()}>
                   <input
                     type="text"
@@ -153,11 +149,11 @@ const Hero = () => {
             </div>
 
             {/* Stats for Mobile (2x2 Grid) */}
-            <div className="grid grid-cols-2 gap-3 mt-5 w-full max-w-sm border-t border-white/10 pt-4">
+            <div className="grid grid-cols-2 gap-y-4 gap-x-2.5 mt-5 w-full max-w-sm border-t border-white/10 pt-4">
               {stats.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-1.5"
                 >
                   <div className="flex items-center justify-center border border-[#1E62EC]/40 bg-[#1E62EC]/10 rounded-full w-8 h-8 flex-shrink-0">
                     <img
@@ -170,7 +166,7 @@ const Hero = () => {
                     <h3 className="text-white text-xs font-extrabold leading-none whitespace-nowrap">
                       {item.title}
                     </h3>
-                    <p className="text-white/70 text-[8px] leading-tight mt-0.5 max-w-[90px]">
+                    <p className="text-white/70 text-[9px] sm:text-[10px] leading-none mt-1 whitespace-nowrap">
                       {item.subtitle}
                     </p>
                   </div>
@@ -209,7 +205,7 @@ const Hero = () => {
 
             {/* CENTER TEXT */}
             <div className="flex-grow flex items-center justify-center text-center px-2 md:px-4">
-              <h1 
+              <h1
                 className="text-white text-base md:text-lg lg:text-2xl xl:text-3xl font-bold whitespace-nowrap"
                 style={{ animation: 'pulseText 2s infinite' }}
               >
@@ -217,10 +213,8 @@ const Hero = () => {
               </h1>
             </div>
 
-            {/* RIGHT BUTTON/SEATS */}
-            <div className="flex-shrink-0 border border-white/20 bg-white/10 px-4 py-1.5 rounded-full text-white text-xs md:text-sm font-semibold">
-              {HERO_CONTENT.limitedSeats}
-            </div>
+            {/* SPACER FOR BALANCED CENTERING */}
+            <div className="w-24 md:w-28 lg:w-36 xl:w-42 flex-shrink-0 hidden md:block" />
           </div>
 
           {/* Hero Body */}
@@ -253,24 +247,24 @@ const Hero = () => {
 
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 xl:flex xl:flex-row items-center justify-between gap-6 mt-8 border-t border-white/10 pt-6 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4 mt-8 border-t border-white/10 pt-6 w-full">
                   {stats.map((item, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 xl:pr-6 xl:border-r xl:border-white/10 xl:last:border-none xl:flex-1"
+                      className="flex items-center gap-3.5"
                     >
-                      <div className="flex items-center justify-center border border-[#1E62EC]/50 bg-[#1E62EC]/10 rounded-full w-10 h-10 lg:w-12 lg:h-12 flex-shrink-0">
+                      <div className="flex items-center justify-center border border-[#1E62EC]/50 bg-[#1E62EC]/10 rounded-full w-10 h-10 lg:w-11 lg:h-11 flex-shrink-0">
                         <img
                           src={item.icon}
                           alt=""
-                          className="w-5 h-5 lg:w-6 lg:h-6 object-contain"
+                          className="w-5 h-5 lg:w-5.5 lg:h-5.5 object-contain"
                         />
                       </div>
                       <div className="flex flex-col text-left">
-                        <h3 className="text-white text-sm md:text-base lg:text-lg xl:text-xl font-extrabold leading-none whitespace-nowrap">
+                        <h3 className="text-white text-base lg:text-lg xl:text-xl font-extrabold leading-none whitespace-nowrap">
                           {item.title}
                         </h3>
-                        <p className="text-white/70 text-[9px] lg:text-xs leading-snug mt-1 max-w-[110px] lg:max-w-[140px]">
+                        <p className="text-white/75 text-xs lg:text-sm font-semibold leading-none mt-1 whitespace-nowrap">
                           {item.subtitle}
                         </p>
                       </div>
@@ -282,9 +276,7 @@ const Hero = () => {
               {/* Right Column: NPF Form Container */}
               <div className="w-full md:w-[42%] flex justify-center md:justify-end">
                 <div className="w-full max-w-md bg-black/40 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/10 flex flex-col">
-                  <h3 className="text-white text-lg font-bold mb-4 text-center">
-                    Admission Enquiry 2026-27
-                  </h3>
+
                   <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                     <input
                       type="text"

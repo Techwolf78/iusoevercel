@@ -37,7 +37,7 @@ const RecruitersStats = () => {
         <div className="pt-4">
           <button
             onClick={handleApplyClick}
-            className="px-6 py-3 md:px-8 md:py-3.5 bg-[#E3003A] hover:bg-[#c00032] text-white font-bold rounded-lg text-sm md:text-base shadow-[0_6px_20px_-4px_rgba(227,0,58,0.35)] hover:shadow-[0_8px_25px_-4px_rgba(227,0,58,0.45)] transform hover:-translate-y-0.5 hover:scale-103 active:translate-y-0 active:scale-100 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 mx-auto"
+            className="px-6 py-3 md:px-8 md:py-3.5 bg-gradient-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] text-white font-bold rounded-lg text-sm md:text-base shadow-[0_6px_20px_-4px_rgba(194,22,59,0.35)] hover:shadow-[0_8px_25px_-4px_rgba(194,22,59,0.45)] transform hover:-translate-y-0.5 hover:scale-103 active:translate-y-0 active:scale-100 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 mx-auto"
           >
             <span>Apply Now</span>
             <svg
