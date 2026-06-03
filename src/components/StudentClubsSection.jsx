@@ -1,7 +1,7 @@
 import React from "react";
 import club3 from "../assets/Events/club2.jpeg";
 import club2 from "../assets/Events/club1.jpeg";
-import club1 from "../assets/Events/club3.jpg";
+import club1 from "../assets/Events/club3.JPG";
 import club5 from "../assets/Events/club4.jpeg";
 import club4 from "../assets/Events/club5.jpeg";
 

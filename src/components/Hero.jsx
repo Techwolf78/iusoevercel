@@ -52,7 +52,7 @@ const Hero = () => {
         <div className="relative z-10 flex flex-col h-auto">
           {/* Navbar */}
           <div className="flex items-center justify-between px-4 py-3 bg-[#000B2E]">
-            <img src={IUlogo} alt="IU Logo" className="h-10 object-contain" />
+            <img src={IUlogo} alt="IU Logo" className="h-13 object-contain" />
             <div className="border border-white/20 bg-white/10 px-3 py-1 rounded-full text-white text-[10px] font-semibold tracking-wide">
               {HERO_CONTENT.limitedSeats}
             </div>
@@ -164,7 +164,7 @@ const Hero = () => {
             <img
               src={IUlogo}
               alt="IU Logo"
-              className="h-14 md:h-16 object-contain"
+              className="h-18 md:h-22 object-contain"
             />
             <div className="border border-white/20 bg-white/10 px-4 py-1.5 rounded-full text-white text-xs md:text-sm font-semibold">
               {HERO_CONTENT.limitedSeats}
