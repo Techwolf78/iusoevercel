@@ -15,7 +15,7 @@ import TopPlacements from "./TopPlacements";
 
 function CourseDetails() {
   return (
-    <div className="w-full px-6 py-8 poppins-regular">
+    <div className="w-full poppins-regular">
       <TopPlacements />
     </div>
   );
