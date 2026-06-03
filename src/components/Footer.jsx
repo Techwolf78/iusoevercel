@@ -40,7 +40,7 @@ function Footer() {
 
               <div className="flex items-start space-x-4">
                 <i className="fas fa-phone-alt text-2xl hover:text-green-500 mt-1"></i>
-                <p className="break-words">020-67103909/935/927/900 | +91 92265 35466</p>
+                <p className="break-words"> +91 9156266619</p>
               </div>
 
               <div className="flex items-center space-x-4">
@@ -58,7 +58,7 @@ function Footer() {
 
             <div className="flex space-x-6 text-2xl">
               <a
-                href="https://www.facebook.com/IndiraGroup/"
+                href="https://www.facebook.com/IndiraGroup"
                 aria-label="Facebook"
                 className="transform transition-transform duration-300 hover:scale-110 relative z-10 icon-link"
                 target="_blank"
@@ -67,7 +67,7 @@ function Footer() {
                 <i className="fab fa-facebook-f text-blue-600 hover:text-blue-800 transition-all duration-300"></i>
               </a>
               <a
-                href="https://www.instagram.com/indiragroupofinstitutespune/"
+                href="https://www.instagram.com/indirauniversitypune/"
                 aria-label="Instagram"
                 className="transform transition-transform duration-300 hover:scale-110 relative z-10 icon-link"
                 target="_blank"
@@ -76,7 +76,7 @@ function Footer() {
                 <i className="fab fa-instagram text-pink-500 hover:text-pink-700 transition-all duration-300"></i>
               </a>
               <a
-                href="https://www.linkedin.com/company/indiragroup/"
+                href="https://www.linkedin.com/company/indirauniversity/"
                 aria-label="LinkedIn"
                 className="transform transition-transform duration-300 hover:scale-110 relative z-10 icon-link"
                 target="_blank"
@@ -121,7 +121,7 @@ function Footer() {
                   Home
                 </a>
                 <a
-                  href="https://www.indirauniversity.edu.in/about-us"
+                  href="https://indirauniversity.edu.in/about-indira-university"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-gray-600 hover:text-gray-400 text-lg"
@@ -148,7 +148,7 @@ function Footer() {
                   Our Schools
                 </a>
                 <a
-                  href="https://www.indirauniversity.edu.in/admissions#"
+                  href="https://indirauniversity.edu.in/privacypolicy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-gray-600 hover:text-gray-400 text-lg"
@@ -156,7 +156,7 @@ function Footer() {
                   Privacy Policy
                 </a>
                 <a
-                  href="https://www.indirauniversity.edu.in/admissions#"
+                  href="https://indirauniversity.edu.in/terms-conditions-indira-university"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-gray-600 hover:text-gray-400 text-lg"
