@@ -1,9 +1,9 @@
-import React from "react";
-import event1 from "../assets/Events/event3.jpg";
-import event2 from "../assets/Events/BParak.JPG";
-import event3 from "../assets/Events/IWA2.webp";
-import event4 from "../assets/Events/event4.jpg";
-import event5 from "../assets/Events/event5.jpg";
+
+import event1 from "../assets/Events/event3.avif";
+import event2 from "../assets/Events/BParak.avif";
+import event3 from "../assets/Events/IWA2.avif";
+import event4 from "../assets/Events/event4.avif";
+import event5 from "../assets/Events/event5.avif";
 
 const NewSection = () => {
   const events = [

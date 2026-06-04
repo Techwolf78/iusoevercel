@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import img1 from "../assets/16.png";
-import img2 from "../assets/17.png";
-import img3 from "../assets/18.png";
-import img4 from "../assets/19.png";
-import img5 from "../assets/20.png";
-import img6 from "../assets/21.png";
-import img7 from "../assets/22.png";
+import { useEffect, useRef, useState } from "react";
+import img1 from "../assets/16.avif";
+import img2 from "../assets/17.avif";
+import img3 from "../assets/18.avif";
+import img4 from "../assets/19.avif";
+import img5 from "../assets/20.avif";
+import img6 from "../assets/21.avif";
+import img7 from "../assets/22.avif";
 
 const students = [
   {
@@ -106,7 +106,7 @@ const TopPlacements = () => {
             {[...students, ...students].map((student, i) => (
               <div
                 key={i}
-                className="mx-3 flex-shrink-0 w-[55vw] sm:w-[40vw] md:w-[26vw] lg:w-[16vw]"
+                className="mx-3 shrink-0 w-[55vw] sm:w-[40vw] md:w-[26vw] lg:w-[16vw]"
               >
                 <div className="group overflow-hidden">
                   {/* IMAGE */}

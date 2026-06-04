@@ -1,4 +1,4 @@
-import React from "react";
+
 import NewSection from "./NewSection";
 import CampusHighlightsSection from "./CampusHighlightsSection";
 import StudentClubsSection from "./StudentClubsSection";
@@ -11,7 +11,7 @@ import StudentClubsSection from "./StudentClubsSection";
  */
 export default function CampusHighlights() {
   return (
-    <div className="w-full flex flex-col bg-gradient-to-b from-[#8B0035] via-[#14002E] to-[#8B0035]">
+    <div className="w-full flex flex-col bg-linear-to-b from-[#8B0035] via-[#14002E] to-[#8B0035]">
       <NewSection />
       <CampusHighlightsSection />
       <StudentClubsSection />

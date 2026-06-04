@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/IULogo.png";
+import logo from "../assets/IULogo.avif";
 
 function Footer() {
   useEffect(() => {
@@ -17,7 +17,7 @@ function Footer() {
 
   return (
     <div className="font-baskerville-regualr flex flex-col">
-      <div className="bg-gray-100 px-5 md:px-16 text-black py-8 rounded-tl-4xl rounded-tr-4xl flex-grow footer">
+      <div className="bg-gray-100 px-5 md:px-16 text-black py-8 rounded-tl-4xl rounded-tr-4xl grow footer">
         <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 mt-6">
           {/* Left Column */}
           <div className="flex flex-col items-start space-y-8">
@@ -40,7 +40,7 @@ function Footer() {
 
               <div className="flex items-start space-x-4">
                 <i className="fas fa-phone-alt text-2xl hover:text-green-500 mt-1"></i>
-                <p className="break-words"> +91 9156266619</p>
+                <p className="wrap-break-word"> +91 9156266619</p>
               </div>
 
               <div className="flex items-center space-x-4">

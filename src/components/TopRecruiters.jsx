@@ -1,13 +1,13 @@
-import React from "react";
+
 
 // Dynamically import all logos directly from the src/assets/Logo folder (excluding logo 44)
-const logoModules = import.meta.glob("../assets/Logo/*.jpg", { eager: true });
+const logoModules = import.meta.glob("../assets/Logo/*.avif", { eager: true });
 const logos = Object.entries(logoModules)
-  .filter(([path]) => !path.endsWith("/44.jpg"))
-  .map(([_, mod]) => mod.default);
+  .filter(([path]) => !path.endsWith("/44.avif"))
+  .map(([, mod]) => mod.default);
 
 const RECRUITERS_CONTENT = {
-  title: "Top Recruiters",
+  title: "INDIRA'S TOP RECRUITERS",
   description: "Trusted by 350+ Leading Recruiters of India"
 };
 
@@ -25,7 +25,7 @@ const TopRecruiters = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-r from-[#01051F] via-[#14002E] to-[#8B0035] py-4 md:py-8 px-4 overflow-hidden">
+    <section className="w-full bg-linear-to-r from-[#01051F] via-[#14002E] to-[#8B0035] py-4 md:py-8 px-4 overflow-hidden">
       <div className="w-full text-center mb-8 max-w-5xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 leading-tight">
           {RECRUITERS_CONTENT.title}
@@ -61,7 +61,7 @@ const TopRecruiters = () => {
             {repeatToFill(row1).map((logo, index) => (
               <div
                 key={`row1-${index}`}
-                className="flex-shrink-0 bg-white rounded-xl flex items-center justify-center p-2.5 w-[170px] h-[75px] shadow-lg"
+                className="shrink-0 bg-white rounded-xl flex items-center justify-center p-2.5 w-[170px] h-[75px] shadow-lg"
               >
                 <img
                   src={logo}
@@ -79,7 +79,7 @@ const TopRecruiters = () => {
             {repeatToFill(row2).map((logo, index) => (
               <div
                 key={`row2-${index}`}
-                className="flex-shrink-0 bg-white rounded-xl flex items-center justify-center p-2.5 w-[170px] h-[75px] shadow-lg"
+                className="shrink-0 bg-white rounded-xl flex items-center justify-center p-2.5 w-[170px] h-[75px] shadow-lg"
               >
                 <img
                   src={logo}
@@ -97,7 +97,7 @@ const TopRecruiters = () => {
             {repeatToFill(row3).map((logo, index) => (
               <div
                 key={`row3-${index}`}
-                className="flex-shrink-0 bg-white rounded-xl flex items-center justify-center p-2.5 w-[170px] h-[75px] shadow-lg"
+                className="shrink-0 bg-white rounded-xl flex items-center justify-center p-2.5 w-[170px] h-[75px] shadow-lg"
               >
                 <img
                   src={logo}

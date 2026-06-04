@@ -1,14 +1,20 @@
-import React from "react";
-import Ai from "../assets/Ai.png";
-import Cyber from "../assets/Cyber.png";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Ai from "../assets/Ai.avif";
+import Cyber from "../assets/Cyber.avif";
 import {
   FaRegClock,
-  FaChartLine,
-  FaUserTie,
-  FaCheckCircle,
+  
+  
+  
   FaGraduationCap,
   FaCreditCard,
 } from "react-icons/fa";
+
+// Register ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
 const PROGRAM_CONTENT = {
   sectionTitle: "B.Tech in Computer Science & Engineering",
   sectionSubtitle: "Programme Overview",
@@ -43,6 +49,7 @@ const PROGRAM_CONTENT = {
     }
   ]
 };
+
 const POINTERS_DATA = [
   {
     id: 1,
@@ -62,23 +69,86 @@ const POINTERS_DATA = [
     value: "2,50,000 per year",
     icon: FaCreditCard,
   },
-
 ];
+
 const ProgramOverview = () => {
+  const containerRef = useRef(null);
+
   const handleApplyClick = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    if (window.lenis) {
+      window.lenis.scrollTo(0);
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
   };
 
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      // Title Animation
+      gsap.fromTo(
+        ".program-title",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Pointers staggered entrance
+      gsap.fromTo(
+        ".program-pointer",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".program-pointers-grid",
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Course card background parallax
+      gsap.utils.toArray(".program-spec-bg").forEach((bg) => {
+        gsap.fromTo(bg, 
+          { yPercent: -15 },
+          {
+            yPercent: 15,
+            ease: "none",
+            scrollTrigger: {
+              trigger: bg.closest(".program-spec-card"),
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            }
+          }
+        );
+      });
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full bg-white py-2 md:py-8 px-6 md:px-12 max-w-7xl mx-auto">
+    <section ref={containerRef} className="w-full bg-white py-2 md:py-8 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       {/* Top Section */}
-
-      <div className="mb-10 md:mb-14">
+      <div className="program-title mb-10 md:mb-14">
         <h2 className="text-3xl md:text-5xl font-bold text-[#000B24] mb-4 md:mb-6 leading-tight">
-
           {PROGRAM_CONTENT.sectionSubtitle}
           <span className="block text-[#990000] text-lg md:text-2xl font-bold uppercase tracking-wider mb-2">
             {PROGRAM_CONTENT.sectionTitle}
@@ -88,11 +158,12 @@ const ProgramOverview = () => {
           {PROGRAM_CONTENT.sectionDesc}
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full mb-6">
+
+      <div className="program-pointers-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full mb-6">
         {POINTERS_DATA.map(({ id, title, value, icon: Icon }) => (
           <div
             key={id}
-            className="w-full bg-[#F6FBFF] p-6 shadow-md flex flex-col items-center justify-center
+            className="program-pointer w-full bg-[#F6FBFF] p-6 shadow-md flex flex-col items-center justify-center
                        transition-all duration-300 ease-in-out
                        hover:scale-105 hover:shadow-2xl hover:bg-[#E9F7FA]"
           >
@@ -108,26 +179,27 @@ const ProgramOverview = () => {
           </div>
         ))}
       </div>
+
       {PROGRAM_CONTENT.specialisations.map((spec, index) => {
         const isEven = index % 2 === 0;
         return (
           <div key={index} className="mb-8 last:mb-6">
             {/* Desktop Course Box */}
             <div
-              className="hidden md:flex w-full min-h-[45vh] rounded-tl-[2.5rem] rounded-br-[2.5rem] shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative py-8 md:py-10"
+              className="program-spec-card hidden md:flex w-full min-h-[45vh] rounded-tl-[2.5rem] rounded-br-[2.5rem] shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative py-8 md:py-10"
             >
               {/* Inner container to handle background image and gradient clipping */}
               <div className="absolute inset-0 rounded-tl-[2.5rem] rounded-br-[2.5rem] overflow-hidden z-0 pointer-events-none bg-[#071A8C]">
                 {/* Background Image */}
                 <div
-                  className="absolute inset-0 bg-cover bg-top"
+                  className="program-spec-bg absolute inset-0 bg-cover bg-top"
                   style={{ backgroundImage: `url(${spec.bgImage})` }}
                 />
                 {/* Gradient Overlay */}
                 <div
                   className={`absolute inset-0 ${isEven
-                    ? "bg-gradient-to-r from-[#071A8C]/95 via-[#071A8C]/75 to-transparent"
-                    : "bg-gradient-to-l from-[#071A8C]/95 via-[#071A8C]/75 to-transparent"
+                    ? "bg-linear-to-r from-[#071A8C]/95 via-[#071A8C]/75 to-transparent"
+                    : "bg-linear-to-l from-[#071A8C]/95 via-[#071A8C]/75 to-transparent"
                     }`}
                 />
               </div>
@@ -162,7 +234,7 @@ const ProgramOverview = () => {
 
               {/* Study Mode Info Panel for AI (Even Index) */}
               {isEven && (
-                <div className="relative z-10 w-[40%] h-full flex flex-col justify-center items-end text-white pr- md:pr-12 lg:pr-16 select-none">
+                <div className="relative z-10 w-[40%] h-full flex flex-col justify-center items-end text-white pr-8 md:pr-12 lg:pr-16 select-none">
                   <div className="text-left md:text-right bg-black/20 backdrop-blur-md border border-white/10 p-5 rounded-2xl shadow-xl max-w-[240px]">
                     <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">Study Mode</p>
                     <p className="text-white font-bold text-sm md:text-base mb-3">Full-Time</p>
@@ -176,11 +248,11 @@ const ProgramOverview = () => {
               <button
                 onClick={handleApplyClick}
                 className={`absolute bottom-0 ${isEven ? "right-12" : "left-12"
-                  } transform translate-y-1/2 bg-gradient-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] hover:scale-105 active:scale-95 transition-all duration-300 text-white font-bold text-xs md:text-sm tracking-wider px-6 py-2.5 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-2 z-20`}
+                  } transform translate-y-1/2 bg-linear-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] hover:scale-105 active:scale-95 transition-all duration-300 text-white font-bold text-xs md:text-sm tracking-wider px-6 py-2.5 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-2 z-20`}
               >
                 APPLY NOW
                 <svg
-                  className="w-4 h-4 flex-shrink-0"
+                  className="w-4 h-4 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -197,17 +269,17 @@ const ProgramOverview = () => {
 
             {/* Mobile Course Card */}
             <div
-              className="block md:hidden w-full rounded-tl-[2rem] rounded-br-[2rem] relative shadow-md pb-8"
+              className="block md:hidden w-full rounded-tl-4xl rounded-br-4xl relative shadow-md pb-8 overflow-hidden bg-[#071A8C]"
             >
               {/* Inner container to handle background image and gradient clipping */}
-              <div className="absolute inset-0 rounded-tl-[2rem] rounded-br-[2rem] overflow-hidden z-0 pointer-events-none">
+              <div className="absolute inset-0 rounded-tl-4xl rounded-br-4xl overflow-hidden z-0 pointer-events-none">
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 bg-cover bg-top"
                   style={{ backgroundImage: `url(${spec.bgImage})` }}
                 />
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#071A8C]/90 via-[#071A8C]/70 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-r from-[#071A8C]/90 via-[#071A8C]/70 to-transparent" />
               </div>
 
               <div className="relative z-10 p-6">
@@ -241,11 +313,11 @@ const ProgramOverview = () => {
               {/* Mobile Apply Button overlapping bottom border */}
               <button
                 onClick={handleApplyClick}
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-gradient-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] active:scale-95 transition-all duration-300 text-white font-bold text-xs tracking-wider px-6 py-2 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-1.5 z-20 whitespace-nowrap"
+                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-linear-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] active:scale-95 transition-all duration-300 text-white font-bold text-xs tracking-wider px-6 py-2 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-1.5 z-20 whitespace-nowrap"
               >
                 APPLY NOW
                 <svg
-                  className="w-3.5 h-3.5 flex-shrink-0"
+                  className="w-3.5 h-3.5 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -267,3 +339,4 @@ const ProgramOverview = () => {
 };
 
 export default ProgramOverview;
+

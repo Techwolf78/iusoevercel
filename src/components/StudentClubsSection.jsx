@@ -1,9 +1,9 @@
-import React from "react";
-import club3 from "../assets/Events/club2.jpeg";
-import club2 from "../assets/Events/club1.jpeg";
-import club1 from "../assets/Events/club3.JPG";
-import club5 from "../assets/Events/club4.jpeg";
-import club4 from "../assets/Events/club5.jpeg";
+
+import club3 from "../assets/Events/club2.avif";
+import club2 from "../assets/Events/club1.avif";
+import club1 from "../assets/Events/club3.avif";
+import club5 from "../assets/Events/club4.avif";
+import club4 from "../assets/Events/club5.avif";
 
 const StudentClubsSection = () => {
   const clubs = [
@@ -18,7 +18,7 @@ const StudentClubsSection = () => {
     <section className="w-full bg-transparent pt-4 pb-12 md:pt-6 md:pb-16 px-6 md:px-12 text-white">
       <div className="max-w-7xl mx-auto">
         {/* Top Divider Line with Red Gradient */}
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#8B0035] to-transparent mb-6 opacity-15" />
+        <div className="w-full h-px bg-linear-to-r from-transparent via-[#8B0035] to-transparent mb-6 opacity-15" />
 
         {/* Main Content: Flex column on mobile, Row on desktop */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
@@ -39,7 +39,7 @@ const StudentClubsSection = () => {
                   "Swakiyam Foundation for Incubation and Innovation"
                 ].map((club, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-slate-200 text-sm md:text-base">
-                    <span className="mt-2 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#1E62EC] shadow-[0_0_6px_#1E62EC]" />
+                    <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-[#1E62EC] shadow-[0_0_6px_#1E62EC]" />
                     <span className="font-semibold leading-tight">{club}</span>
                   </li>
                 ))}
@@ -57,7 +57,7 @@ const StudentClubsSection = () => {
                   className={`overflow-hidden rounded-xl shadow ${i === 4 ? "col-span-2" : ""
                     }`}
                 >
-                  <img src={c.image} alt={c.name} className="w-full h-40 object-cover" />
+                  <img src={c.image} alt={c.name} className="w-full h-40 object-cover" loading="lazy" />
                 </div>
               ))}
             </div>
@@ -71,19 +71,19 @@ const StudentClubsSection = () => {
               }}
             >
               <div style={{ gridColumn: "1 / span 4", gridRow: "1 / span 4" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <img src={clubs[1].image} alt={clubs[1].name} className="w-full h-full object-cover" />
+                <img src={clubs[1].image} alt={clubs[1].name} className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div style={{ gridColumn: "5 / span 2", gridRow: "1 / span 7" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <img src={clubs[0].image} alt={clubs[0].name} className="w-full h-full object-cover" />
+                <img src={clubs[0].image} alt={clubs[0].name} className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div style={{ gridColumn: "1 / span 2", gridRow: "5 / span 6" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <img src={clubs[2].image} alt={clubs[2].name} className="w-full h-full object-cover" />
+                <img src={clubs[2].image} alt={clubs[2].name} className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div style={{ gridColumn: "3 / span 2", gridRow: "5 / span 3" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <img src={clubs[3].image} alt={clubs[3].name} className="w-full h-full object-cover" />
+                <img src={clubs[3].image} alt={clubs[3].name} className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div style={{ gridColumn: "3 / span 4", gridRow: "8 / span 3" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <img src={clubs[4].image} alt={clubs[4].name} className="w-full h-full object-cover" style={{ objectPosition: "center 18%" }} />
+                <img src={clubs[4].image} alt={clubs[4].name} className="w-full h-full object-cover" style={{ objectPosition: "center 18%" }} loading="lazy" />
               </div>
             </div>
           </div>

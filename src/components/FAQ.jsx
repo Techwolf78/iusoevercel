@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 
 /* ---------------- FAQ DATA ---------------- */
@@ -63,7 +63,7 @@ const AccordionItem = ({ item, isOpen, onClick }) => {
         {/* Icon */}
         <span
           className={`
-            flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center
+            shrink-0 w-8 h-8 rounded-full flex items-center justify-center
             transition-all duration-300
             ${
               isOpen

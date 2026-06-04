@@ -1,4 +1,9 @@
-import React from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 const APPLY_CONTENT = {
   mainHeading: "How to Apply for B.Tech at Indira University, Pune",
@@ -49,30 +54,123 @@ const STEP_ICONS = [
 ];
 
 function ApplyProcess() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      // Heading reveals
+      gsap.fromTo(
+        ".apply-heading",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Desktop Progress Line
+      gsap.to(".timeline-progress-line", {
+        width: "calc(100% - 64px)",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".apply-timeline-container",
+          start: "top 70%",
+          end: "bottom 60%",
+          scrub: true
+        }
+      });
+
+      // Desktop Steps scaling/highlighting
+      const steps = gsap.utils.toArray(".timeline-step");
+      steps.forEach((step) => {
+        gsap.fromTo(
+          step,
+          { scale: 0.8, opacity: 0.6 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+              trigger: step,
+              start: "top 75%",
+              end: "bottom 55%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      });
+
+      // Mobile Progress Line
+      gsap.to(".timeline-progress-line-mobile", {
+        height: "calc(100% - 48px)",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".apply-timeline-container-mobile",
+          start: "top 75%",
+          end: "bottom 65%",
+          scrub: true
+        }
+      });
+
+      // Mobile Steps scaling
+      const mobileSteps = gsap.utils.toArray(".timeline-step-mobile");
+      mobileSteps.forEach((step) => {
+        gsap.fromTo(
+          step,
+          { scale: 0.8, opacity: 0.5 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: "back.out(1.5)",
+            scrollTrigger: {
+              trigger: step,
+              start: "top 80%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      });
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full bg-white py-12 md:py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col items-center">
+    <section ref={containerRef} className="w-full bg-white py-12 md:py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col items-center overflow-hidden">
       {/* Main Heading */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#000B2E] text-center tracking-tight">
-        B.Tech Admission <span className="text-[#A80B2C]">Open For 2026-2027</span>
-      </h2>
-      <p className="text-gray-600 text-sm sm:text-base md:text-lg mt-2 mb-12 text-center font-medium">
-        {APPLY_CONTENT.mainHeading}
-      </p>
+      <div className="apply-heading flex flex-col items-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#000B2E] text-center tracking-tight">
+          B.Tech Admission <span className="text-[#A80B2C]">Open For 2026-2027</span>
+        </h2>
+        <p className="text-gray-600 text-sm sm:text-base md:text-lg mt-2 mb-12 text-center font-medium">
+          {APPLY_CONTENT.mainHeading}
+        </p>
+      </div>
 
       {/* ═══════════════════════════════════════════
           MOBILE LAYOUT (Vertical timeline)
       ═══════════════════════════════════════════ */}
-      <div className="relative md:hidden flex flex-col items-stretch w-full max-w-md mx-auto space-y-8 pl-2">
+      <div className="relative md:hidden flex flex-col items-stretch w-full max-w-md mx-auto space-y-8 pl-2 apply-timeline-container-mobile">
         {/* Vertical timeline line */}
         <div className="absolute left-[30px] top-6 bottom-6 w-[2px] bg-gray-200"></div>
+        {/* Active vertical colored line */}
+        <div className="absolute left-[30px] top-6 w-[2px] bg-linear-to-b from-[#A80B2C] to-[#0A1633] timeline-progress-line-mobile" style={{ height: '0%' }}></div>
 
         {APPLY_CONTENT.steps.map((stepText, idx) => {
           const isEven = idx % 2 === 0;
           const bgColor = isEven ? "bg-[#A80B2C]" : "bg-[#0A1633]";
           return (
-            <div key={idx} className="relative flex items-start gap-4">
+            <div key={idx} className="timeline-step-mobile relative flex items-start gap-4">
               {/* Circular Badge with Halo */}
-              <div className={`relative z-10 w-11 h-11 rounded-full ${bgColor} border-2 border-white ring-4 ring-gray-100 flex items-center justify-center flex-shrink-0 shadow-md`}>
+              <div className={`relative z-10 w-11 h-11 rounded-full ${bgColor} border-2 border-white ring-4 ring-gray-100 flex items-center justify-center shrink-0 shadow-md`}>
                 <div className="transform scale-75">
                   {STEP_ICONS[idx]}
                 </div>
@@ -98,17 +196,19 @@ function ApplyProcess() {
       {/* ═══════════════════════════════════════════
           DESKTOP LAYOUT (Horizontal timeline)
       ═══════════════════════════════════════════ */}
-      <div className="hidden md:flex relative w-full max-w-6xl mx-auto items-start justify-between">
+      <div className="hidden md:flex relative w-full max-w-6xl mx-auto items-start justify-between apply-timeline-container">
         {/* Connecting Horizontal Line */}
-        <div className="absolute left-8 right-8 top-8 h-[2px] bg-gray-200 -z-0"></div>
+        <div className="absolute left-8 right-8 top-8 h-[2px] bg-gray-200 z-0"></div>
+        {/* Active colored line drawing */}
+        <div className="absolute left-8 top-8 h-[2px] bg-linear-to-r from-[#A80B2C] to-[#0A1633] z-0 timeline-progress-line" style={{ width: '0%' }}></div>
 
         {APPLY_CONTENT.steps.map((stepText, idx) => {
           const isEven = idx % 2 === 0;
           const bgColor = isEven ? "bg-[#A80B2C]" : "bg-[#0A1633]";
           return (
-            <div key={idx} className="relative z-10 flex flex-col items-center text-center w-[180px] lg:w-[210px] px-2">
+            <div key={idx} className="timeline-step relative z-10 flex flex-col items-center text-center w-[180px] lg:w-[210px] px-2">
               {/* Circular Badge with Halo */}
-              <div className={`w-16 h-16 rounded-full ${bgColor} border-4 border-white ring-8 ring-white shadow-xl flex items-center justify-center flex-shrink-0 mb-4 transition-all duration-300 hover:scale-110`}>
+              <div className={`w-16 h-16 rounded-full ${bgColor} border-4 border-white ring-8 ring-white shadow-xl flex items-center justify-center shrink-0 mb-4 transition-all duration-300 hover:scale-110`}>
                 {STEP_ICONS[idx]}
               </div>
 
