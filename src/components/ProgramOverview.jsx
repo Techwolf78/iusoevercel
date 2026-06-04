@@ -182,10 +182,9 @@ const ProgramOverview = () => {
       </div>
 
       {/* Specializations Heading */}
-      <div className="w-full text-center mt-12 mb-10">
-        <h3 className="text-2xl md:text-3.5xl font-extrabold text-[#000B24] tracking-tight relative inline-block">
+      <div className="w-full mt-10 mb-6">
+        <h3 className="text-xl md:text-3xl font-medium text-[#000B24]">
           Specializations We Offer
-          <span className="absolute left-1/2 bottom-[-8px] transform -translate-x-1/2 w-16 h-1 bg-[#990000] rounded-full" />
         </h3>
       </div>
 
