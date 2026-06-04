@@ -26,7 +26,7 @@ const HERO_CONTENT = {
     "Join India's Most Future-Ready  ",
     "B.Tech Programme",
   ],
-  description: "Specialise in Artificial Intelligence & Data Science or Cyber Security & Cloud Computing. Learn through hackathons, live projects, and innovation labs. 350+ recruiters are waiting for you.",
+  description: "Specialise in Artificial Intelligence & Data Science and Cyber Security & Cloud Computing. Learn through hackathons, live projects, and innovation labs. 350+ recruiters are waiting for you.",
   subText: (
     <>
       Enrol for <span className="font-bold text-[#E3003A]">B.Tech in CSE</span> under <span className="font-bold text-[#E3003A]">School of Engineering (SOE)</span> to be a part of the Exclusive Coder's Club
