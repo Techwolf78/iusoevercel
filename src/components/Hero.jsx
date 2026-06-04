@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import IUlogo from "../assets/IULogo.avif";
 import HeroBg from "../assets/HeroImg.avif";
+import curvedImg from "../assets/stamp4.avif";
 
 import Icon1 from "../assets/icon5.avif";
 import Icon2 from "../assets/icon6.avif";
@@ -13,29 +14,56 @@ import Icon4 from "../assets/icon8.avif";
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { icon: Icon1, target: 20, suffix: "+", title: "20+", subtitle: "Years of Engineering Legacy" },
-  { icon: Icon2, target: 350, suffix: "+", title: "350+", subtitle: "Top Recruiters" },
-  { icon: Icon3, target: 100, suffix: "%", title: "100%", subtitle: "Guaranteed Placement Opportunities" },
-  { icon: Icon4, target: 27, suffix: " LPA", title: "27 LPA", subtitle: "Highest CTC" },
+  {
+    icon: Icon1,
+    target: 20,
+    suffix: "+",
+    title: "20+",
+    subtitle: "Years of Engineering Legacy",
+  },
+  {
+    icon: Icon2,
+    target: 350,
+    suffix: "+",
+    title: "350+",
+    subtitle: "Top Recruiters",
+  },
+  {
+    icon: Icon3,
+    target: 100,
+    suffix: "%",
+    title: "100%",
+    subtitle: "Guaranteed Placement Opportunities",
+  },
+  {
+    icon: Icon4,
+    target: 27,
+    suffix: " LPA",
+    title: "27 LPA",
+    subtitle: "Highest CTC",
+  },
 ];
 
 const HERO_CONTENT = {
   limitedSeats: "LIMITED SEATS",
-  heading: [
-    "Join India's Most Future-Ready  ",
-    "B.Tech Programme",
-  ],
-  description: "Specialize in Artificial Intelligence & Data Science and Cyber Security & Cloud Computing. Learn through hackathons, live projects, and innovation labs. 350+ recruiters are waiting for you.",
+  heading: ["Join India's Most Future-Ready  ", "B.Tech Programme"],
+  description:
+    "Specialize in Artificial Intelligence & Data Science and Cyber Security & Cloud Computing. Learn through hackathons, live projects, and innovation labs. 350+ recruiters are waiting for you.",
   subText: (
     <>
-      Enrol for <span className="font-bold text-[#E3003A]">B.Tech in CSE</span> under <span className="font-bold text-[#E3003A]">School of Engineering (SOE)</span> to be a part of the Exclusive Coder's Club
+      Enrol for <span className="font-bold text-[#E3003A]">B.Tech in CSE</span>{" "}
+      under{" "}
+      <span className="font-bold text-[#E3003A]">
+        School of Engineering (SOE)
+      </span>{" "}
+      to be a part of the Exclusive Coder's Club
     </>
   ),
   admissionTag: "Admission open for 2026-2027",
   buttons: {
     apply: "APPLY NOW",
     brochure: "Download brochure",
-  }
+  },
 };
 
 const Hero = () => {
@@ -44,14 +72,45 @@ const Hero = () => {
   useEffect(() => {
     let ctx = gsap.context(() => {
       // 1. Entrance animation timeline on load
-      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
-      
-      tl.fromTo(".hero-bg", { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5 })
-        .fromTo(".hero-title-line", { y: 40, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.15 }, "-=1")
-        .fromTo(".hero-desc", { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.6")
-        .fromTo(".hero-tag", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, ease: "back.out(1.7)" }, "-=0.6")
-        .fromTo(".hero-form-container", { x: 50, opacity: 0 }, { x: 0, opacity: 1 }, "-=0.8")
-        .fromTo(".hero-stat-card", { y: 20, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1 }, "-=0.6");
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out", duration: 1 },
+      });
+
+      tl.fromTo(
+        ".hero-bg",
+        { scale: 1.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.5 },
+      )
+        .fromTo(
+          ".hero-title-line",
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.15 },
+          "-=1",
+        )
+        .fromTo(
+          ".hero-desc",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1 },
+          "-=0.6",
+        )
+        .fromTo(
+          ".hero-tag",
+          { scale: 0.8, opacity: 0 },
+          { scale: 1, opacity: 1, ease: "back.out(1.7)" },
+          "-=0.6",
+        )
+        .fromTo(
+          ".hero-form-container",
+          { x: 50, opacity: 0 },
+          { x: 0, opacity: 1 },
+          "-=0.8",
+        )
+        .fromTo(
+          ".hero-stat-card",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.1 },
+          "-=0.6",
+        );
 
       // 2. Parallax background scroll effect
       gsap.to(".hero-bg", {
@@ -62,17 +121,17 @@ const Hero = () => {
           start: "top top",
           end: "bottom top",
           scrub: true,
-        }
+        },
       });
 
       // 3. Count up stats animation
       const statsNum = document.querySelectorAll(".stat-number");
-      statsNum.forEach(stat => {
+      statsNum.forEach((stat) => {
         const targetValStr = stat.getAttribute("data-target");
         const targetVal = parseFloat(targetValStr);
         const suffix = stat.getAttribute("data-suffix") || "";
         const obj = { value: 0 };
-        
+
         gsap.to(obj, {
           value: targetVal,
           duration: 1.8,
@@ -80,14 +139,13 @@ const Hero = () => {
           scrollTrigger: {
             trigger: stat,
             start: "top 95%",
-            toggleActions: "play none none none"
+            toggleActions: "play none none none",
           },
           onUpdate: () => {
             stat.innerText = Math.floor(obj.value) + suffix;
-          }
+          },
         });
       });
-
     }, containerRef);
 
     return () => ctx.revert();
@@ -110,7 +168,7 @@ const Hero = () => {
   return (
     <div ref={containerRef} className="overflow-hidden w-full relative">
       <style>{pulseKeyframes}</style>
-      
+
       {/* ═══════════════════════════════════════════
           MOBILE LAYOUT  (hidden on md and above)
       ═══════════════════════════════════════════ */}
@@ -124,7 +182,12 @@ const Hero = () => {
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55" />
 
-
+        {/* Curved Stamp Decoration */}
+        <img
+          src={curvedImg}
+          alt="Indira University Stamp"
+          className="absolute top-[105px] right-3 w-[50px] h-auto object-contain pointer-events-none drop-shadow-xl z-20 transform -translate-y-1/2"
+        />
 
         {/* Content */}
         <div className="relative z-10 flex flex-col h-auto">
@@ -133,11 +196,7 @@ const Hero = () => {
             {/* Top Row - Logos */}
             <div className="flex justify-center w-full items-center mb-2">
               <div className="shrink-0">
-                <img
-                  src={IUlogo}
-                  alt="IU Logo"
-                  className="h-auto w-20"
-                />
+                <img src={IUlogo} alt="IU Logo" className="h-auto w-20" />
               </div>
             </div>
 
@@ -145,9 +204,11 @@ const Hero = () => {
             <div className="text-center w-full">
               <h1
                 className="text-white text-[15px] font-bold px-2 leading-tight"
-                style={{ animation: 'pulseText 2s infinite' }}
+                style={{ animation: "pulseText 2s infinite" }}
               >
-                SCHOOL OF ENGINEERING<br />(INDIRA UNIVERSITY)
+                SCHOOL OF ENGINEERING
+                <br />
+                (INDIRA UNIVERSITY)
               </h1>
             </div>
           </div>
@@ -157,7 +218,12 @@ const Hero = () => {
             {/* Heading */}
             <h1 className="hero-title text-white font-bold leading-tight text-[18px] sm:text-2xl">
               {HERO_CONTENT.heading.map((line, index) => (
-                <span key={index} className={`hero-title-line block ${index === 1 ? "text-[#1E62EC]" : "text-white"}`}>{line}</span>
+                <span
+                  key={index}
+                  className={`hero-title-line block ${index === 1 ? "text-[#1E62EC]" : "text-white"}`}
+                >
+                  {line}
+                </span>
               ))}
             </h1>
 
@@ -179,7 +245,10 @@ const Hero = () => {
             {/* NPF Form Container for Mobile */}
             <div className="hero-form-container mt-5 w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl">
               <div id="npf-mobile-form" className="w-full">
-                <form className="space-y-2.5" onSubmit={(e) => e.preventDefault()}>
+                <form
+                  className="space-y-2.5"
+                  onSubmit={(e) => e.preventDefault()}
+                >
                   <input
                     id="mobile-name"
                     name="name"
@@ -210,9 +279,15 @@ const Hero = () => {
                     className="w-full h-9 bg-[#000B2E]/90 border border-white/10 focus:border-white/30 focus:bg-[#000B2E]/10 transition-all rounded-lg px-3 text-white/70 text-xs outline-none"
                     defaultValue=""
                   >
-                    <option value="" disabled>Select Course</option>
-                    <option value="btech-ai-ds">B.Tech (AI & Data Science)</option>
-                    <option value="btech-cyber-cloud">B.Tech (Cyber Security & Cloud Technology)</option>
+                    <option value="" disabled>
+                      Select Course
+                    </option>
+                    <option value="btech-ai-ds">
+                      B.Tech (AI & Data Science)
+                    </option>
+                    <option value="btech-cyber-cloud">
+                      B.Tech (Cyber Security & Cloud Technology)
+                    </option>
                   </select>
                   <button className="w-full bg-linear-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] py-2 rounded-lg text-white font-bold text-[11px] tracking-wider active:scale-[0.98] transition-all shadow-md">
                     Submit
@@ -233,12 +308,21 @@ const Hero = () => {
                       src={item.icon}
                       alt=""
                       className="w-4 h-4 object-contain"
-                      style={{ filter: 'brightness(0) saturate(100%) invert(31%) sepia(83%) saturate(3474%) hue-rotate(213deg) brightness(97%) contrast(91%)' }}
+                      style={{
+                        filter:
+                          "brightness(0) saturate(100%) invert(31%) sepia(83%) saturate(3474%) hue-rotate(213deg) brightness(97%) contrast(91%)",
+                      }}
                     />
                   </div>
                   <div className="flex flex-col text-left">
                     <h3 className="text-white text-xs font-extrabold leading-none whitespace-nowrap">
-                      <span className="stat-number" data-target={item.target} data-suffix={item.suffix}>0{item.suffix}</span>
+                      <span
+                        className="stat-number"
+                        data-target={item.target}
+                        data-suffix={item.suffix}
+                      >
+                        0{item.suffix}
+                      </span>
                     </h3>
                     <p className="text-white/70 text-[9px] sm:text-[10px] leading-none mt-1 whitespace-nowrap">
                       {item.subtitle}
@@ -264,7 +348,12 @@ const Hero = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
 
-
+        {/* Curved Stamp Decoration */}
+        <img
+          src={curvedImg}
+          alt="Indira University Stamp"
+          className="absolute top-[72px] lg:top-[115px] right-6 lg:right-16 w-[70px] md:w-[90px] lg:w-[105px] h-auto object-contain pointer-events-none drop-shadow-xl z-20 transform -translate-y-1/2"
+        />
 
         {/* Main Content */}
         <div className="relative z-10 min-h-screen flex flex-col">
@@ -283,7 +372,7 @@ const Hero = () => {
             <div className="grow flex items-center justify-center text-center px-2 md:px-4">
               <h1
                 className="text-white text-base md:text-lg lg:text-2xl xl:text-3xl font-bold whitespace-nowrap"
-                style={{ animation: 'pulseText 2s infinite' }}
+                style={{ animation: "pulseText 2s infinite" }}
               >
                 SCHOOL OF ENGINEERING (INDIRA UNIVERSITY)
               </h1>
@@ -296,13 +385,17 @@ const Hero = () => {
           {/* Hero Body */}
           <div className="flex-1 flex items-center px-5 md:px-16 py-8 md:py-12">
             <div className="w-full flex flex-col md:flex-row items-center gap-10 lg:gap-16">
-
               {/* Left Column: Text & Stats */}
               <div className="w-full md:w-[58%] flex flex-col items-center md:items-start text-center md:text-left">
                 {/* Heading */}
                 <h1 className="hero-title text-white font-bold leading-tight text-[26px] sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px]">
                   {HERO_CONTENT.heading.map((line, index) => (
-                    <span key={index} className={`hero-title-line block md:whitespace-nowrap ${index === 1 ? "text-[#1E62EC]" : "text-white"}`}>{line}</span>
+                    <span
+                      key={index}
+                      className={`hero-title-line block md:whitespace-nowrap ${index === 1 ? "text-[#1E62EC]" : "text-white"}`}
+                    >
+                      {line}
+                    </span>
                   ))}
                 </h1>
 
@@ -328,12 +421,21 @@ const Hero = () => {
                           src={item.icon}
                           alt=""
                           className="w-5 h-5 lg:w-5.5 lg:h-5.5 object-contain"
-                          style={{ filter: 'brightness(0) saturate(100%) invert(31%) sepia(83%) saturate(3474%) hue-rotate(213deg) brightness(97%) contrast(91%)' }}
+                          style={{
+                            filter:
+                              "brightness(0) saturate(100%) invert(31%) sepia(83%) saturate(3474%) hue-rotate(213deg) brightness(97%) contrast(91%)",
+                          }}
                         />
                       </div>
                       <div className="flex flex-col text-left">
                         <h3 className="text-white text-base lg:text-lg xl:text-xl font-extrabold leading-none whitespace-nowrap">
-                          <span className="stat-number" data-target={item.target} data-suffix={item.suffix}>0{item.suffix}</span>
+                          <span
+                            className="stat-number"
+                            data-target={item.target}
+                            data-suffix={item.suffix}
+                          >
+                            0{item.suffix}
+                          </span>
                         </h3>
                         <p className="text-white/75 text-xs lg:text-sm font-semibold leading-none mt-1 whitespace-nowrap">
                           {item.subtitle}
@@ -350,7 +452,10 @@ const Hero = () => {
               {/* Right Column: NPF Form Container */}
               <div className="hero-form-container w-full md:w-[32%] flex justify-center md:justify-end">
                 <div className="w-full max-w-md bg-black/40 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/10 flex flex-col">
-                  <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  <form
+                    className="space-y-4"
+                    onSubmit={(e) => e.preventDefault()}
+                  >
                     <input
                       id="desktop-name"
                       name="name"
@@ -381,9 +486,15 @@ const Hero = () => {
                       className="w-full h-10 bg-[#000B2E]/90 border border-white/10 focus:border-white/30 focus:bg-[#000B2E]/10 transition-all rounded-lg px-3 text-white/70 text-xs outline-none"
                       defaultValue=""
                     >
-                      <option value="" disabled>Select Course</option>
-                      <option value="btech-ai-ds">B.Tech (AI & Data Science)</option>
-                      <option value="btech-cyber-cloud">B.Tech (Cyber Security & Cloud Technology)</option>
+                      <option value="" disabled>
+                        Select Course
+                      </option>
+                      <option value="btech-ai-ds">
+                        B.Tech (AI & Data Science)
+                      </option>
+                      <option value="btech-cyber-cloud">
+                        B.Tech (Cyber Security & Cloud Technology)
+                      </option>
                     </select>
                     <button className="w-full bg-linear-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] py-2.5 rounded-lg text-white font-bold text-sm tracking-wider shadow-lg active:scale-[0.98] transition-all">
                       Submit
@@ -391,7 +502,6 @@ const Hero = () => {
                   </form>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -401,4 +511,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
