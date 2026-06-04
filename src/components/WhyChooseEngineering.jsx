@@ -95,17 +95,15 @@ function WhyChooseEngineering() {
           </h2>
         </div>
 
-        {/* Cards — 2 columns on mobile */}
-        <div className="why-choose-card-grid grid grid-cols-2 gap-3">
+        {/* Cards — stacked on mobile for crystal legibility */}
+        <div className="why-choose-card-grid grid grid-cols-1 gap-3">
           {WHY_CHOOSE_CONTENT.features.map((feature, index) => {
-            const isLast = index === WHY_CHOOSE_CONTENT.features.length - 1;
             return (
               <div
                 key={index}
-                className={`why-choose-card border border-[#1D5DFF]/30 bg-white/5 rounded-2xl p-3 flex flex-col items-center justify-center text-center h-[110px] ${isLast ? "col-span-2" : ""
-                  }`}
+                className="why-choose-card border border-[#1D5DFF]/30 bg-white/5 rounded-2xl py-4 px-5 flex flex-col items-center justify-center text-center min-h-[70px]"
               >
-                <h3 className="text-white text-[11px] font-bold leading-snug">
+                <h3 className="text-white text-sm font-semibold leading-snug">
                   {feature.title}
                 </h3>
               </div>

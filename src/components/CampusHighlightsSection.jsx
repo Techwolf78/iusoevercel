@@ -33,7 +33,7 @@ const CampusHighlightsSection = () => {
               Smart classrooms, computer labs, library with e-resources,
               Innovation and Entrepreneurship Center for startups, AC hostels
               with Wi-Fi, cafeteria, sports complex, gymnasium, medical center,
-              placement cell, and modern auditorium for comprehensive BBA
+              placement cell, and modern auditorium for comprehensive B.Tech
               education in Pune.
             </p>
           </div>

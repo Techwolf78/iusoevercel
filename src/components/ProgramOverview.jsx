@@ -270,7 +270,7 @@ const ProgramOverview = () => {
 
             {/* Mobile Course Card */}
             <div
-              className="block md:hidden w-full rounded-tl-4xl rounded-br-4xl relative shadow-md pb-8 overflow-hidden bg-[#071A8C]"
+              className="block md:hidden w-full rounded-tl-4xl rounded-br-4xl relative shadow-md pb-14 overflow-hidden bg-[#071A8C]"
             >
               {/* Inner container to handle background image and gradient clipping */}
               <div className="absolute inset-0 rounded-tl-4xl rounded-br-4xl overflow-hidden z-0 pointer-events-none">
@@ -314,7 +314,7 @@ const ProgramOverview = () => {
               {/* Mobile Apply Button overlapping bottom border */}
               <button
                 onClick={handleApplyClick}
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-linear-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] active:scale-95 transition-all duration-300 text-white font-bold text-xs tracking-wider px-6 py-2 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-1.5 z-20 whitespace-nowrap"
+                className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-linear-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] active:scale-95 transition-all duration-300 text-white font-bold text-xs tracking-wider px-6 py-2 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-1.5 z-20 whitespace-nowrap"
               >
                 APPLY NOW
                 <svg
