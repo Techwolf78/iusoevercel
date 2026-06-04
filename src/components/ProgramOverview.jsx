@@ -4,14 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LazyBackground } from "./LazyLoad";
 import Ai from "../assets/Ai.avif";
 import Cyber from "../assets/Cyber.avif";
-import {
-  FaRegClock,
-  
-  
-  
-  FaGraduationCap,
-  FaCreditCard,
-} from "react-icons/fa";
+import { FaRegClock, FaGraduationCap, FaCreditCard } from "react-icons/fa";
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -19,12 +12,15 @@ gsap.registerPlugin(ScrollTrigger);
 const PROGRAM_CONTENT = {
   sectionTitle: "B.Tech in Computer Science & Engineering",
   sectionSubtitle: "Programme Overview",
-  sectionDesc: "The B.Tech in Computer Science & Engineering at Indira University blends core engineering principles with advanced computing technologies, creating a learning environment where innovation, problem-solving, and industry readiness go hand in hand.",
+  sectionDesc:
+    "The B.Tech in Computer Science & Engineering at Indira University blends core engineering principles with advanced computing technologies, creating a learning environment where innovation, problem-solving, and industry readiness go hand in hand.",
   specialisations: [
     {
-      title: "B.Tech in Artificial Intelligence & Data Science",
+      title:
+        "B.Tech in Computer Science Engineering Specialization in Artificial Intelligence & Data Science",
       bgImage: Ai,
-      description: "Prepares students to build intelligent, data-driven solutions for the evolving digital economy. Through practical learning, advanced analytics, and emerging AI technologies, students gain expertise to create smart systems and drive innovation across industries.",
+      description:
+        "Prepares students to build intelligent, data-driven solutions for the evolving digital economy. Through practical learning, advanced analytics, and emerging AI technologies, students gain expertise to create smart systems and drive innovation across industries.",
       points: [
         "Artificial Intelligence & Machine Learning",
         "DevOps Engineering",
@@ -32,12 +28,14 @@ const PROGRAM_CONTENT = {
         "Big Data Analytics & Data Engineering",
         "Computer Vision & Image Processing",
         "Generative AI & Large Language Models (LLMs)",
-      ]
+      ],
     },
     {
-      title: "B.Tech in Cyber Security & Cloud Technology",
+      title:
+        "B.Tech in Computer Science Engineering Specialization in Cyber Security & Cloud Technology",
       bgImage: Cyber,
-      description: "Prepares students to become next-generation cyber defenders and cloud security professionals in an increasingly connected digital world. Through hands-on learning, real-world simulations, and advanced security practices, students gain expertise in protecting systems, networks, cloud platforms, and digital infrastructure.",
+      description:
+        "Prepares students to become next-generation cyber defenders and cloud security professionals in an increasingly connected digital world. Through hands-on learning, real-world simulations, and advanced security practices, students gain expertise in protecting systems, networks, cloud platforms, and digital infrastructure.",
       points: [
         "Operating System Security",
         "Cyber Law & Cyber Policy",
@@ -46,9 +44,9 @@ const PROGRAM_CONTENT = {
         "Cloud Computing Architecture",
         "Cloud Infrastructure & Services",
         "Cloud Security & Governance",
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 };
 
 const POINTERS_DATA = [
@@ -81,7 +79,7 @@ const ProgramOverview = () => {
     } else {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
@@ -100,9 +98,9 @@ const ProgramOverview = () => {
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 85%",
-            toggleActions: "play none none none"
-          }
-        }
+            toggleActions: "play none none none",
+          },
+        },
       );
 
       // Pointers staggered entrance
@@ -118,14 +116,15 @@ const ProgramOverview = () => {
           scrollTrigger: {
             trigger: ".program-pointers-grid",
             start: "top 85%",
-            toggleActions: "play none none none"
-          }
-        }
+            toggleActions: "play none none none",
+          },
+        },
       );
 
       // Course card background parallax
       gsap.utils.toArray(".program-spec-bg").forEach((bg) => {
-        gsap.fromTo(bg, 
+        gsap.fromTo(
+          bg,
           { yPercent: -15 },
           {
             yPercent: 15,
@@ -135,18 +134,20 @@ const ProgramOverview = () => {
               start: "top bottom",
               end: "bottom top",
               scrub: true,
-            }
-          }
+            },
+          },
         );
       });
-
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full bg-white py-2 md:py-8 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section
+      ref={containerRef}
+      className="w-full bg-white py-2 md:py-8 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden"
+    >
       {/* Top Section */}
       <div className="program-title mb-10 md:mb-14">
         <h2 className="text-3xl md:text-5xl font-bold text-[#000B24] mb-4 md:mb-6 leading-tight">
@@ -181,21 +182,12 @@ const ProgramOverview = () => {
         ))}
       </div>
 
-      {/* Specializations Heading */}
-      <div className="w-full mt-10 mb-6">
-        <h3 className="text-xl md:text-3xl font-medium text-[#000B24]">
-          Specializations We Offer
-        </h3>
-      </div>
-
       {PROGRAM_CONTENT.specialisations.map((spec, index) => {
         const isEven = index % 2 === 0;
         return (
           <div key={index} className="mb-8 last:mb-6">
             {/* Desktop Course Box */}
-            <div
-              className="program-spec-card hidden md:flex w-full min-h-[45vh] rounded-tl-[2.5rem] rounded-br-[2.5rem] shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative py-8 md:py-10"
-            >
+            <div className="program-spec-card hidden md:flex w-full min-h-[45vh] rounded-tl-[2.5rem] rounded-br-[2.5rem] shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative py-8 md:py-10">
               {/* Inner container to handle background image and gradient clipping */}
               <div className="absolute inset-0 rounded-tl-[2.5rem] rounded-br-[2.5rem] overflow-hidden z-0 pointer-events-none bg-[#071A8C]">
                 {/* Background Image */}
@@ -205,10 +197,11 @@ const ProgramOverview = () => {
                 />
                 {/* Gradient Overlay */}
                 <div
-                  className={`absolute inset-0 ${isEven
-                    ? "bg-linear-to-r from-[#071A8C]/95 via-[#071A8C]/75 to-transparent"
-                    : "bg-linear-to-l from-[#071A8C]/95 via-[#071A8C]/75 to-transparent"
-                    }`}
+                  className={`absolute inset-0 ${
+                    isEven
+                      ? "bg-linear-to-r from-[#071A8C]/95 via-[#071A8C]/75 to-transparent"
+                      : "bg-linear-to-l from-[#071A8C]/95 via-[#071A8C]/75 to-transparent"
+                  }`}
                 />
               </div>
 
@@ -216,10 +209,18 @@ const ProgramOverview = () => {
               {!isEven && (
                 <div className="relative z-10 w-[40%] h-full flex flex-col justify-center items-start text-white pl-8 md:pl-12 lg:pl-16 select-none">
                   <div className="text-left bg-black/20 backdrop-blur-md border border-white/10 p-5 rounded-2xl shadow-xl max-w-[240px]">
-                    <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">Study Mode</p>
-                    <p className="text-white font-bold text-sm md:text-base mb-3">Full-Time</p>
-                    <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">Duration</p>
-                    <p className="text-white font-bold text-sm md:text-base">4 Years (8 Semesters)</p>
+                    <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">
+                      Study Mode
+                    </p>
+                    <p className="text-white font-bold text-sm md:text-base mb-3">
+                      Full-Time
+                    </p>
+                    <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">
+                      Duration
+                    </p>
+                    <p className="text-white font-bold text-sm md:text-base">
+                      4 Years (8 Semesters)
+                    </p>
                   </div>
                 </div>
               )}
@@ -244,10 +245,18 @@ const ProgramOverview = () => {
               {isEven && (
                 <div className="relative z-10 w-[40%] h-full flex flex-col justify-center items-end text-white pr-8 md:pr-12 lg:pr-16 select-none">
                   <div className="text-left md:text-right bg-black/20 backdrop-blur-md border border-white/10 p-5 rounded-2xl shadow-xl max-w-[240px]">
-                    <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">Study Mode</p>
-                    <p className="text-white font-bold text-sm md:text-base mb-3">Full-Time</p>
-                    <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">Duration</p>
-                    <p className="text-white font-bold text-sm md:text-base">4 Years (8 Semesters)</p>
+                    <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">
+                      Study Mode
+                    </p>
+                    <p className="text-white font-bold text-sm md:text-base mb-3">
+                      Full-Time
+                    </p>
+                    <p className="text-white/70 text-xs md:text-sm tracking-wide font-medium">
+                      Duration
+                    </p>
+                    <p className="text-white font-bold text-sm md:text-base">
+                      4 Years (8 Semesters)
+                    </p>
                   </div>
                 </div>
               )}
@@ -255,8 +264,9 @@ const ProgramOverview = () => {
               {/* Desktop Apply Button overlapping bottom border */}
               <button
                 onClick={handleApplyClick}
-                className={`absolute bottom-0 ${isEven ? "right-12" : "left-12"
-                  } transform translate-y-1/2 bg-linear-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] hover:scale-105 active:scale-95 transition-all duration-300 text-white font-bold text-xs md:text-sm tracking-wider px-6 py-2.5 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-2 z-20`}
+                className={`absolute bottom-0 ${
+                  isEven ? "right-12" : "left-12"
+                } transform translate-y-1/2 bg-linear-to-r from-[#C2163B] to-[#7B0D2B] hover:from-[#d61e47] hover:to-[#911235] hover:scale-105 active:scale-95 transition-all duration-300 text-white font-bold text-xs md:text-sm tracking-wider px-6 py-2.5 rounded-lg shadow-[0_4px_15px_rgba(194,22,59,0.35)] flex items-center gap-2 z-20`}
               >
                 APPLY NOW
                 <svg
@@ -276,9 +286,7 @@ const ProgramOverview = () => {
             </div>
 
             {/* Mobile Course Card */}
-            <div
-              className="block md:hidden w-full rounded-tl-4xl rounded-br-4xl relative shadow-md pb-14 overflow-hidden bg-[#071A8C]"
-            >
+            <div className="block md:hidden w-full rounded-tl-4xl rounded-br-4xl relative shadow-md pb-14 overflow-hidden bg-[#071A8C]">
               {/* Inner container to handle background image and gradient clipping */}
               <div className="absolute inset-0 rounded-tl-4xl rounded-br-4xl overflow-hidden z-0 pointer-events-none">
                 {/* Background Image */}
@@ -308,12 +316,18 @@ const ProgramOverview = () => {
                 {/* Additional Study Info on Mobile */}
                 <div className="flex justify-between border-t border-white/20 pt-4 mb-4 text-white">
                   <div>
-                    <p className="text-white/60 text-[10px] uppercase font-medium">Study Mode</p>
+                    <p className="text-white/60 text-[10px] uppercase font-medium">
+                      Study Mode
+                    </p>
                     <p className="text-white font-bold text-xs">Full-Time</p>
                   </div>
                   <div>
-                    <p className="text-white/60 text-[10px] uppercase font-medium">Duration</p>
-                    <p className="text-white font-bold text-xs">4 Years (8 Sem)</p>
+                    <p className="text-white/60 text-[10px] uppercase font-medium">
+                      Duration
+                    </p>
+                    <p className="text-white font-bold text-xs">
+                      4 Years (8 Sem)
+                    </p>
                   </div>
                 </div>
               </div>
@@ -347,4 +361,3 @@ const ProgramOverview = () => {
 };
 
 export default ProgramOverview;
-

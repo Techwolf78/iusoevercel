@@ -7,8 +7,8 @@ import overviewImg from "../assets/IU.avif";
 const ABOUT_CONTENT = {
   title: "About the School of Engineering – Indira University",
   paragraphs: [
-    "The School of Engineering (SOE) at Indira University, braced by two decades of Indira's legacy in engineering education through Indira College of Engineering and Management (ICEM), is designed to cultivate technically adept, ethically grounded, and industry-ready engineers. Our flagship B.Tech in Computer Science & Engineering bridges strong engineering fundamentals with the rapidly evolving demands of today's technology-driven world."
-  ]
+    "With 31+ years of Indira University's legacy and two decades of engineering excellence, the School of Engineering (SOE) is designed to cultivate technically adept, ethically grounded, and industry-ready engineers. Our flagship B.Tech in Computer Science & Engineering bridges strong engineering fundamentals with the rapidly evolving demands of today's technology-driven world.",
+  ],
 };
 
 function AboutUs() {
@@ -30,7 +30,7 @@ function AboutUs() {
             start: "top 80%",
             toggleActions: "play none none none",
           },
-        }
+        },
       );
 
       // Right side image wrapper animation
@@ -47,7 +47,7 @@ function AboutUs() {
             start: "top 80%",
             toggleActions: "play none none none",
           },
-        }
+        },
       );
 
       // Image parallax scrolling
@@ -59,7 +59,7 @@ function AboutUs() {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
-        }
+        },
       });
     }, containerRef);
 
@@ -67,7 +67,10 @@ function AboutUs() {
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full bg-white py-12 md:py-12 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section
+      ref={containerRef}
+      className="w-full bg-white py-12 md:py-12 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden"
+    >
       <div className="flex flex-col md:flex-row items-center gap-12">
         {/* Left Content */}
         <div className="about-text w-full md:w-[45%] space-y-6">
@@ -99,4 +102,3 @@ function AboutUs() {
 }
 
 export default AboutUs;
-
