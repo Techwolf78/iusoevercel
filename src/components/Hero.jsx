@@ -69,6 +69,11 @@ const HERO_CONTENT = {
 const Hero = () => {
   const containerRef = useRef(null);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    window.location.href = "/thank-you";
+  };
+
   useEffect(() => {
     let ctx = gsap.context(() => {
       // 1. Entrance animation timeline on load
@@ -186,7 +191,7 @@ const Hero = () => {
         <img
           src={curvedImg}
           alt="Indira University Stamp"
-          className="absolute top-[105px] right-3 w-[50px] h-auto object-contain pointer-events-none drop-shadow-xl z-20 transform -translate-y-1/2"
+          className="absolute top-[105px] right-3 w-[50px] h-auto object-contain pointer-events-none drop-shadow-xl z-50 transform -translate-y-1/2"
         />
 
         {/* Content */}
@@ -247,7 +252,7 @@ const Hero = () => {
               <div id="npf-mobile-form" className="w-full">
                 <form
                   className="space-y-2.5"
-                  onSubmit={(e) => e.preventDefault()}
+                  onSubmit={handleSubmit}
                 >
                   <input
                     id="mobile-name"
@@ -348,17 +353,10 @@ const Hero = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
 
-        {/* Curved Stamp Decoration */}
-        <img
-          src={curvedImg}
-          alt="Indira University Stamp"
-          className="absolute top-[72px] lg:top-[115px] right-6 lg:right-16 w-[70px] md:w-[90px] lg:w-[105px] h-auto object-contain pointer-events-none drop-shadow-xl z-20 transform -translate-y-1/2"
-        />
-
         {/* Main Content */}
         <div className="relative z-10 min-h-screen flex flex-col">
           {/* Navbar */}
-          <div className="w-full flex items-center justify-between px-4 md:px-8 lg:px-16 py-3 md:py-4 bg-[#000B2E]">
+          <div className="w-full flex items-center justify-between px-4 md:px-8 lg:px-16 py-3 md:py-4 bg-[#000B2E] relative">
             {/* LEFT LOGO */}
             <div className="shrink-0">
               <img
@@ -380,10 +378,17 @@ const Hero = () => {
 
             {/* SPACER FOR BALANCED CENTERING */}
             <div className="w-24 md:w-28 lg:w-36 xl:w-42 shrink-0 hidden md:block" />
+
+            {/* Curved Stamp Decoration (97% in navbar, 3% in hero) */}
+            <img
+              src={curvedImg}
+              alt="Indira University Stamp"
+              className="absolute top-0 right-6 lg:right-16 w-[55px] md:w-[70px] lg:w-[85px] h-auto object-contain pointer-events-none drop-shadow-xl z-50"
+            />
           </div>
 
           {/* Hero Body */}
-          <div className="flex-1 flex items-center px-5 md:px-16 py-8 md:py-12">
+          <div className="flex-1 flex items-center px-5 md:px-16 py-8 md:py-12 relative">
             <div className="w-full flex flex-col md:flex-row items-center gap-10 lg:gap-16">
               {/* Left Column: Text & Stats */}
               <div className="w-full md:w-[58%] flex flex-col items-center md:items-start text-center md:text-left">
@@ -454,7 +459,7 @@ const Hero = () => {
                 <div className="w-full max-w-md bg-black/40 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/10 flex flex-col">
                   <form
                     className="space-y-4"
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={handleSubmit}
                   >
                     <input
                       id="desktop-name"

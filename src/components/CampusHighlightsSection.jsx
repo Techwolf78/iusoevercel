@@ -8,11 +8,11 @@ import facilities5 from "../assets/Events/facilities5.avif";
 
 const CampusHighlightsSection = () => {
   const facilities = [
-    { id: 1, name: "facilities1", image: facilities1 },
-    { id: 2, name: "facilities2", image: facilities2 },
-    { id: 3, name: "facilities3", image: facilities3 },
-    { id: 4, name: "facilities4", image: facilities4 },
-    { id: 5, name: "facilities5", image: facilities5 },
+    { id: 1, name: "facilities1", alt: "Indira University Smart Engineering Classroom", image: facilities1 },
+    { id: 2, name: "facilities2", alt: "IUSOE High Performance Computer Lab", image: facilities2 },
+    { id: 3, name: "facilities3", alt: "Indira University Engineering Library and E-Resources", image: facilities3 },
+    { id: 4, name: "facilities4", alt: "IUSOE Innovation and Entrepreneurship Center", image: facilities4 },
+    { id: 5, name: "facilities5", alt: "Indira University Campus AC Hostels and Gymnasium", image: facilities5 },
   ];
 
   return (
@@ -26,9 +26,9 @@ const CampusHighlightsSection = () => {
 
           {/* Text Content: order-1 on mobile, order-2 on desktop */}
           <div className="w-full md:w-[40%] space-y-6 order-1 md:order-2">
-            <h3 className="text-2xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-2xl md:text-5xl font-bold text-white leading-tight">
               Campus Facilities &amp; Infrastructure
-            </h3>
+            </h2>
             <p className="text-sm md:text-lg text-slate-200 leading-relaxed text-justify">
               Smart classrooms, computer labs, library with e-resources,
               Innovation and Entrepreneurship Center for startups, AC hostels
@@ -48,7 +48,7 @@ const CampusHighlightsSection = () => {
                   className={`overflow-hidden rounded-xl shadow ${i === 4 ? "col-span-2" : ""
                     }`}
                 >
-                  <LazyImage src={f.image} alt={f.name} className="w-full h-40 object-cover" />
+                  <LazyImage src={f.image} alt={f.alt} className="w-full h-40 object-cover" />
                 </div>
               ))}
             </div>
@@ -62,19 +62,19 @@ const CampusHighlightsSection = () => {
               }}
             >
               <div style={{ gridColumn: "1 / span 4", gridRow: "1 / span 4" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <LazyImage src={facilities[0].image} alt={facilities[0].name} className="w-full h-full object-cover" />
+                <LazyImage src={facilities[0].image} alt={facilities[0].alt} className="w-full h-full object-cover" />
               </div>
               <div style={{ gridColumn: "5 / span 2", gridRow: "1 / span 7" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <LazyImage src={facilities[1].image} alt={facilities[1].name} className="w-full h-full object-cover" />
+                <LazyImage src={facilities[1].image} alt={facilities[1].alt} className="w-full h-full object-cover" />
               </div>
               <div style={{ gridColumn: "1 / span 2", gridRow: "5 / span 6" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <LazyImage src={facilities[2].image} alt={facilities[2].name} className="w-full h-full object-cover" />
+                <LazyImage src={facilities[2].image} alt={facilities[2].alt} className="w-full h-full object-cover" />
               </div>
               <div style={{ gridColumn: "3 / span 2", gridRow: "5 / span 3" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <LazyImage src={facilities[3].image} alt={facilities[3].name} className="w-full h-full object-cover" />
+                <LazyImage src={facilities[3].image} alt={facilities[3].alt} className="w-full h-full object-cover" />
               </div>
               <div style={{ gridColumn: "3 / span 4", gridRow: "8 / span 3" }} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <LazyImage src={facilities[4].image} alt={facilities[4].name} className="w-full h-full object-cover animate-pulse-slow" />
+                <LazyImage src={facilities[4].image} alt={facilities[4].alt} className="w-full h-full object-cover animate-pulse-slow" />
               </div>
             </div>
           </div>

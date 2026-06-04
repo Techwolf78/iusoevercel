@@ -25,9 +25,9 @@ const StudentClubsSection = () => {
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           {/* Left Side: Text content */}
           <div className="w-full md:w-[40%] space-y-6 order-1 md:order-1">
-            <h3 className="text-2xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-2xl md:text-5xl font-bold text-white leading-tight">
               Engineering Student Clubs
-            </h3>
+            </h2>
             <div className="space-y-4">
               <p className="text-sm md:text-lg text-slate-200 leading-relaxed">
                 Opportunities to learn, lead, compete, and grow holistically through our exclusive clubs:

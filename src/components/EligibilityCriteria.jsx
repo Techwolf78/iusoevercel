@@ -20,9 +20,9 @@ function EligibilityCriteria() {
     <section className="w-full bg-linear-to-b md:bg-linear-to-r from-[#01051F] via-[#14002E] to-[#8B0035] py-4 md:py-6 px-6 md:px-12 overflow-hidden flex flex-col items-center">
       {/* Eligibility Section */}
       <div className="w-full text-center">
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-snug">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-snug">
           {APPLY_CONTENT.eligibilityHeading}
-        </h3>
+        </h2>
 
         {/* Grid matching WhyChooseEngineering simplified cards layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 max-w-5xl mx-auto w-full">

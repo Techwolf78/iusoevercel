@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Hero from "./components/Hero";
 import CourseDetails from "./components/CourseDetails";
 import AboutUs from "./components/AboutUs";
@@ -12,8 +13,23 @@ import ProgramOverview from "./components/ProgramOverview";
 import RecruitersStats from "./components/RecruitersStats";
 import OurCourse from "./components/OurCourse";
 import Footer from "./components/Footer";
+import ThankYou from "./components/ThankYou";
 
 function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener("popstate", handleLocationChange);
+    return () => window.removeEventListener("popstate", handleLocationChange);
+  }, []);
+
+  if (currentPath === "/thank-you" || currentPath === "/thank-you/") {
+    return <ThankYou />;
+  }
+
   return (
     <>
       <Hero />
