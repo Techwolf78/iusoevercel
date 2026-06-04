@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import IUlogo from "../assets/IULogo.avif";
 import HeroBg from "../assets/HeroImg.avif";
-import curvedImg from "../assets/stamp4.avif";
 
 import Icon1 from "../assets/icon5.avif";
 import Icon2 from "../assets/icon6.avif";
@@ -125,12 +124,7 @@ const Hero = () => {
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55" />
 
-        {/* Curved Stamp Decoration */}
-        <img
-          src={curvedImg}
-          alt="Indira University Stamp"
-          className="absolute top-[90px] right-3 w-[70px] h-auto object-contain pointer-events-none drop-shadow-xl z-20 transform -translate-y-1/2"
-        />
+
 
         {/* Content */}
         <div className="relative z-10 flex flex-col h-auto">
@@ -270,12 +264,7 @@ const Hero = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
 
-        {/* Curved Stamp Decoration */}
-        <img
-          src={curvedImg}
-          alt="Indira University Stamp"
-          className="absolute top-[72px] lg:top-[120px]  right-6 lg:right-16 w-[100px] md:w-[130px] lg:w-[155px] h-auto object-contain pointer-events-none drop-shadow-xl z-20 transform -translate-y-1/2"
-        />
+
 
         {/* Main Content */}
         <div className="relative z-10 min-h-screen flex flex-col">
