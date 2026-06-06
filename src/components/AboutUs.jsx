@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { LazyImage } from "./LazyLoad";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import overviewImg from "../assets/IU.avif";
+// Register ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 const ABOUT_CONTENT = {
   title: "About the School of Engineering – Indira University",
@@ -12,6 +13,7 @@ const ABOUT_CONTENT = {
 };
 
 function AboutUs() {
+  const [isPlaying, setIsPlaying] = useState(false);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ function AboutUs() {
         },
       );
 
-      // Right side image wrapper animation
+      // Right side wrapper animation
       gsap.fromTo(
         ".about-image-wrapper",
         { scale: 0.9, opacity: 0 },
@@ -50,15 +52,12 @@ function AboutUs() {
         },
       );
 
-      // Image parallax scrolling
-      gsap.to(".about-img", {
-        yPercent: 10,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
+      // Autoplay video when scrolled into view
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top 70%",
+        onEnter: () => {
+          setIsPlaying(true);
         },
       });
     }, containerRef);
@@ -85,15 +84,28 @@ function AboutUs() {
           </div>
         </div>
 
-        {/* Right Image Container with Overlay */}
+        {/* Right Video Container */}
         <div className="about-image-wrapper w-full md:w-[55%] relative flex items-center justify-center">
-          {/* Main Image */}
-          <div className="w-full h-[280px] md:h-[380px] overflow-hidden rounded-tl-[2.5rem] rounded-br-[2.5rem] shadow-lg border border-slate-100">
-            <LazyImage
-              src={overviewImg}
-              alt="School of Engineering Overview"
-              className="about-img w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-            />
+          <div className="w-full h-[280px] md:h-[380px] overflow-hidden rounded-tl-[2.5rem] rounded-br-[2.5rem] shadow-lg border border-slate-100 bg-[#02103B]/5 relative">
+            {isPlaying ? (
+              <>
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/gEXvD4OVyXg?si=DbzDivXlIHZ-HI1E&autoplay=1&mute=1&controls=0&disablekb=1&iv_load_policy=3&rel=0&loop=1&playlist=gEXvD4OVyXg"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+                {/* Transparent pointer-events overlay */}
+                <div className="absolute inset-0 bg-transparent z-10"></div>
+              </>
+            ) : (
+              <div className="w-full h-full bg-[#02103B]/10 animate-pulse flex items-center justify-center">
+                <div className="w-10 h-10 border-4 border-[#E3003A] border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            )}
           </div>
         </div>
       </div>
